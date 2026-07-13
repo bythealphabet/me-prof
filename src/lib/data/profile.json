@@ -1,0 +1,36 @@
+{
+	"name": "Isaac Lucas",
+	"firstName": "Isaac",
+	"lastName": "Lucas",
+	"role": "Front-end Developer",
+	"location": "Willemstad, Curaçao",
+	"tagline": "Available for freelance work",
+	"heroIntro": "Front-end Developer living in beautiful Curaçao 🌴.",
+	"bio": [
+		"I'm a life-long learner and Front-end Developer based on the beautiful island of Curaçao 🌴.",
+		"It's been several years since I picked up HTML, CSS, and JavaScript — and I fell in love with designing and building for the web. Programming in JavaScript especially has been a constant source of excitement and challenge.",
+		"I'm always looking for ways to strengthen my knowledge and keep up with the evolving JavaScript ecosystem — that means building projects faster, writing cleaner code, and delivering websites that are both functional and a pleasure to use.",
+		"Most of my projects have been built on the MERN Stack (MongoDB, Express, React, Node.js). More recently I've been diving deep into SvelteKit and TypeScript, and loving every bit of it."
+	],
+	"funFacts": [
+		"🎮 Playing video games with my kids — especially Rocket League",
+		"🏀 Basketball and Chess are my two favourite sports",
+		"🎸 Playing guitar — working through the Real Book of Jazz",
+		"🌊 Watching sunsets at Daaibooi Beach, Curaçao"
+	],
+	"contact": {
+		"email": "lucas@bythealphabet.com",
+		"phone": "+599 9 516 8764",
+		"phoneHref": "tel:+59995168764",
+		"location": "Willemstad, Curaçao",
+		"mapsUrl": "https://maps.google.com/?q=Willemstad,Curacao"
+	},
+	"socials": [
+		{ "label": "GitHub", "href": "https://github.com/bythealphabet" },
+		{ "label": "Facebook", "href": "https://www.facebook.com/curacaowebdeveloper/" },
+		{ "label": "Twitter", "href": "https://twitter.com/bythealphabet1" }
+	],
+	"seo": {
+		"defaultDescription": "Isaac Lucas — Front-end Developer based in Curaçao. Building beautiful, functional web applications."
+	}
+}

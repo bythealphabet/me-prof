@@ -1,0 +1,18 @@
+[
+	{
+		"category": "Frontend",
+		"skills": ["SvelteKit", "React", "TypeScript", "JavaScript", "HTML5", "CSS3"]
+	},
+	{
+		"category": "Styling",
+		"skills": ["Tailwind CSS", "Emotion.js", "SASS", "CSS Grid", "Flexbox"]
+	},
+	{
+		"category": "Backend",
+		"skills": ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs"]
+	},
+	{
+		"category": "Tools",
+		"skills": ["Git", "Webpack", "Vite", "Docker", "Figma", "Digital Ocean"]
+	}
+]

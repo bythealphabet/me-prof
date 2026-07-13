@@ -1,0 +1,12 @@
+/* =============================================================================
+   Blue Frame Digital — Design System entry point (ported for the personal
+   portfolio). Mirrors the design system's styles.css @import chain — only
+   @imports; never declare rules here.
+   ============================================================================= */
+
+@import './fonts.css';
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './motion.css';
+@import './base.css';

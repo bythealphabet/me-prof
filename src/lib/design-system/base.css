@@ -1,0 +1,201 @@
+/* =============================================================================
+   Blue Frame Digital — BASE LAYER
+   Reset, base element styling, keyframes and the blueprint grid layout helper.
+   Mirrors the production app.css so components render in their native context.
+   ============================================================================= */
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+/* The 62.5% trick: 1rem = 10px, so the rem type scale reads naturally. */
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+	line-height: 1.5;
+	font-size: 1.6rem;
+	font-family: var(--font-body);
+	color: var(--text-primary);
+	background: var(--background-dark);
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+textarea:not([rows]) {
+	min-height: 10em;
+}
+
+:target {
+	scroll-margin-block: 5ex;
+}
+
+/* ---- Typography defaults ---- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
+	color: var(--text-primary);
+	text-wrap: balance;
+	margin-bottom: var(--spacing-md);
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+}
+h2 {
+	font-size: var(--font-size-h2);
+}
+h3 {
+	font-size: var(--font-size-h3);
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+	line-height: 1.1;
+}
+
+p {
+	margin-bottom: var(--spacing-md);
+	color: var(--text-tertiary);
+	line-height: var(--line-height-normal);
+}
+
+a {
+	color: var(--primary-blue-bright);
+	text-decoration: none;
+	transition: var(--transition-normal);
+	position: relative;
+}
+
+a:hover {
+	color: var(--primary-blue-pale);
+}
+
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+	color: currentColor;
+}
+
+ul[role='list'],
+ol[role='list'] {
+	list-style: none;
+}
+
+/* ---- Focus states ---- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 3px solid var(--primary-teal, var(--primary-blue-light));
+	outline-offset: 2px;
+}
+
+/* ---- Theme cross-fade ---- */
+*,
+*::before,
+*::after {
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease,
+		border-color 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* ---- Signature keyframes ---- */
+@keyframes bfd-fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes bfd-slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(60px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes bfd-scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* ---- The blueprint grid: a faint navy grid overlay used behind heroes ---- */
+.bfd-blueprint-grid {
+	background-image:
+		linear-gradient(rgba(30, 58, 138, 0.13) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(30, 58, 138, 0.13) 1px, transparent 1px);
+	background-size: 50px 50px;
+}
+
+/* ---- The 45° draft hatch texture used on cards ---- */
+.bfd-hatch {
+	background-image: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 10px,
+		rgba(30, 58, 138, 0.03) 10px,
+		rgba(30, 58, 138, 0.03) 20px
+	);
+}

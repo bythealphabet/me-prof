@@ -1,0 +1,45 @@
+/* =============================================================================
+   Blue Frame Digital — SPACING, RADIUS, SHADOW & LAYOUT TOKENS
+   ============================================================================= */
+
+:root {
+	/* Spacing scale */
+	--spacing-xs: 0.5rem; /* 5px  */
+	--spacing-sm: 1rem; /* 10px */
+	--spacing-md: 1.5rem; /* 15px */
+	--spacing-lg: 2rem; /* 20px */
+	--spacing-xl: 3rem; /* 30px */
+	--spacing-2xl: 4rem; /* 40px */
+	--spacing-3xl: 6rem; /* 60px */
+
+	/* Section rhythm */
+	--section-padding: 150px;
+	--section-padding-mobile: 80px;
+
+	/* Layout chrome */
+	--headerHeight: 50px;
+	--footerHeight: 10rem;
+
+	/* Service card geometry */
+	--card-size-h: 38rem;
+	--card-size-w: 30rem;
+
+	/* Border radius — the brand keeps corners small and architectural */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-xl: 16px;
+	--radius-pill: 999px;
+
+	/* Elevation — tinted toward the navy ink, never pure black.
+	   Ambient "fine-paper" shadows; default tiers below for generic use. */
+	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+	/* Brand-tinted card shadows (preferred over the generic tiers above) */
+	--shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 16px rgba(11, 28, 48, 0.2);
+	--shadow-card-hover: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 40px rgba(11, 28, 48, 0.28);
+	--shadow-float: 0 20px 40px rgba(11, 28, 48, 0.06);
+}

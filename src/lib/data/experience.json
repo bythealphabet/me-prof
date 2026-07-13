@@ -1,0 +1,22 @@
+[
+	{
+		"period": "2024 — Now",
+		"title": "SvelteKit & TypeScript",
+		"summary": "Migrating to modern frameworks, embracing type safety and full-stack Svelte development."
+	},
+	{
+		"period": "2021 — 2024",
+		"title": "MERN Stack Developer",
+		"summary": "Building full-stack applications with MongoDB, Express, React, and Node.js for local businesses in Curaçao."
+	},
+	{
+		"period": "2020",
+		"title": "First Freelance Projects",
+		"summary": "Launched Solar Gard and Vertisol Curaçao — two real-world client sites that are still live today."
+	},
+	{
+		"period": "2019",
+		"title": "Fell in Love with JavaScript",
+		"summary": "Started with HTML & CSS, then discovered the power of JavaScript and never looked back."
+	}
+]

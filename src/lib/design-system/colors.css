@@ -1,0 +1,213 @@
+/* =============================================================================
+   Blue Frame Digital — COLOR TOKENS
+   -----------------------------------------------------------------------------
+   The brand ships three palettes — blue (default), green (Caribbean ocean),
+   wood (carpenter's workshop) — each in a dark and a light theme. Colors are
+   applied via data-palette + data-theme on <html>. :root carries the default
+   (blue / dark) so the system renders correctly with no JS attached.
+
+   Token vocabulary (kept verbatim from the production app so components match):
+     --primary-teal*   accent / glow color (the "blue wave" hero text)
+     --primary-blue*   brand navy ramp, used for CTAs and structure
+     --accent-blue*    interactive accent
+     --background-*    page + surface ramp
+     --text-*          foreground ramp
+     --accent-*        warm signal colors (coral / gold / terracotta / sage)
+   ============================================================================= */
+
+/* ----- Default = Classic Blue · Dark (mirrors :root behaviour) ----- */
+:root,
+html[data-palette='blue'][data-theme='dark'] {
+	--primary-teal: #2563eb;
+	--primary-teal-bright: #60a5fa;
+	--primary-teal-pale: #93c5fd;
+
+	--primary-blue: #1e3a8a;
+	--primary-blue-dark: #1e40af;
+	--primary-blue-light: #2563eb;
+	--primary-blue-bright: #60a5fa;
+	--primary-blue-pale: #93c5fd;
+
+	--accent-blue: #2563eb;
+	--accent-blue-light: #60a5fa;
+	--accent-blue-pale: #93c5fd;
+
+	--background-dark: #0a0e1a;
+	--background-dark-alt: #0f1729;
+	--background-card: #152340;
+
+	--text-primary: #e0e7ff;
+	--text-secondary: #93c5fd;
+	--text-tertiary: #cbd5e1;
+	--text-light: #64748b;
+
+	--accent-coral: #f97316;
+	--accent-gold: #fbbf24;
+	--accent-terracotta: #d4745e;
+	--accent-sage: #8b9a7f;
+
+	/* The signature CTA gradient anchor — deeper than primary-blue */
+	--gradient-ink: #00236f;
+}
+
+html[data-palette='blue'][data-theme='light'] {
+	--primary-teal: #1e40af;
+	--primary-teal-bright: #2563eb;
+	--primary-teal-pale: #1e3a8a;
+
+	--primary-blue: #1e3a8a;
+	--primary-blue-dark: #1e40af;
+	--primary-blue-light: #2563eb;
+	--primary-blue-bright: #2563eb;
+	--primary-blue-pale: #1e40af;
+
+	--accent-blue: #2563eb;
+	--accent-blue-light: #3b82f6;
+	--accent-blue-pale: #1e40af;
+
+	--background-dark: #f0f5ff;
+	--background-dark-alt: #e4ecff;
+	--background-card: #ffffff;
+
+	--text-primary: #0b1c30;
+	--text-secondary: #1e3a8a;
+	--text-tertiary: #374151;
+	--text-light: #6b7280;
+
+	--accent-coral: #ea580c;
+	--accent-gold: #d97706;
+	--accent-terracotta: #c05c47;
+	--accent-sage: #6b7c5f;
+
+	--gradient-ink: #00236f;
+}
+
+/* ----- Ocean Green — Caribbean teal + coral CTA ----- */
+html[data-palette='green'][data-theme='dark'] {
+	--primary-teal: #0d9488;
+	--primary-teal-bright: #2dd4bf;
+	--primary-teal-pale: #5eead4;
+
+	--primary-blue: #0f766e;
+	--primary-blue-dark: #115e59;
+	--primary-blue-light: #14b8a6;
+	--primary-blue-bright: #2dd4bf;
+	--primary-blue-pale: #5eead4;
+
+	--accent-blue: #14b8a6;
+	--accent-blue-light: #2dd4bf;
+	--accent-blue-pale: #5eead4;
+
+	--background-dark: #07111a;
+	--background-dark-alt: #0d1e2c;
+	--background-card: #122b3d;
+
+	--text-primary: #e2f8f5;
+	--text-secondary: #7ee8df;
+	--text-tertiary: #cbd5e1;
+	--text-light: #64748b;
+
+	--accent-coral: #f97316;
+	--accent-gold: #fbbf24;
+	--accent-terracotta: #f97316;
+	--accent-sage: #6ee7b7;
+
+	--gradient-ink: #042f2e;
+}
+
+html[data-palette='green'][data-theme='light'] {
+	--primary-teal: #0d9488;
+	--primary-teal-bright: #0f766e;
+	--primary-teal-pale: #115e59;
+
+	--primary-blue: #0f766e;
+	--primary-blue-dark: #115e59;
+	--primary-blue-light: #0d9488;
+	--primary-blue-bright: #0f766e;
+	--primary-blue-pale: #134e4a;
+
+	--accent-blue: #0d9488;
+	--accent-blue-light: #14b8a6;
+	--accent-blue-pale: #134e4a;
+
+	--background-dark: #f0fdfa;
+	--background-dark-alt: #ccfbf1;
+	--background-card: #ffffff;
+
+	--text-primary: #0b1c30;
+	--text-secondary: #0f766e;
+	--text-tertiary: #374151;
+	--text-light: #57534e;
+
+	--accent-coral: #ea580c;
+	--accent-gold: #d97706;
+	--accent-terracotta: #ea580c;
+	--accent-sage: #059669;
+
+	--gradient-ink: #042f2e;
+}
+
+/* ----- Workshop Wood — oak & walnut carpenter's workshop ----- */
+html[data-palette='wood'][data-theme='dark'] {
+	--primary-teal: #ca8a04;
+	--primary-teal-bright: #eab308;
+	--primary-teal-pale: #fde68a;
+
+	--primary-blue: #78350f;
+	--primary-blue-dark: #451a03;
+	--primary-blue-light: #b45309;
+	--primary-blue-bright: #d4a574;
+	--primary-blue-pale: #fcd34d;
+
+	--accent-blue: #b45309;
+	--accent-blue-light: #d4a574;
+	--accent-blue-pale: #fde68a;
+
+	--background-dark: #1a1410;
+	--background-dark-alt: #252018;
+	--background-card: #2d241c;
+
+	--text-primary: #faf6f0;
+	--text-secondary: #e8d5b7;
+	--text-tertiary: #cfc0b0;
+	--text-light: #a89b8f;
+
+	--accent-coral: #ea580c;
+	--accent-gold: #ca8a04;
+	--accent-terracotta: #c2410c;
+	--accent-sage: #6b8f71;
+
+	--gradient-ink: #451a03;
+}
+
+html[data-palette='wood'][data-theme='light'] {
+	--primary-teal: #92400e;
+	--primary-teal-bright: #b45309;
+	--primary-teal-pale: #78350f;
+
+	--primary-blue: #78350f;
+	--primary-blue-dark: #451a03;
+	--primary-blue-light: #b45309;
+	--primary-blue-bright: #a16207;
+	--primary-blue-pale: #78350f;
+
+	--accent-blue: #b45309;
+	--accent-blue-light: #ca8a04;
+	--accent-blue-pale: #92400e;
+
+	--background-dark: #faf6f0;
+	--background-dark-alt: #f0e6d8;
+	--background-card: #fffefb;
+
+	--text-primary: #0b1c30;
+	--text-secondary: #78350f;
+	--text-tertiary: #57534e;
+	--text-light: #78716c;
+
+	--accent-coral: #c2410c;
+	--accent-gold: #b45309;
+	--accent-terracotta: #9a3412;
+	--accent-sage: #4d7c5a;
+
+	--gradient-ink: #451a03;
+}

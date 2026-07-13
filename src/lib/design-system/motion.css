@@ -1,0 +1,32 @@
+/* =============================================================================
+   Blue Frame Digital — MOTION TOKENS
+   -----------------------------------------------------------------------------
+   Motion is confident and smooth — long ease-out curves, no bounce on chrome.
+   The signature curve is cubic-bezier(0.16, 1, 0.3, 1): a fast start that
+   settles gently, used for nearly everything. Color theme swaps cross-fade
+   over 0.3s globally.
+   ============================================================================= */
+
+:root {
+	--duration-fast: 300ms; /* @kind other */
+	--duration-normal: 500ms; /* @kind other */
+	--duration-slow: 700ms; /* @kind other */
+	--duration-slower: 1000ms; /* @kind other */
+
+	/* Signature easing — "the settle" */
+	--easing-ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+	--easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+
+	--transition-fast: all var(--duration-fast) var(--easing-ease-out);
+	--transition-normal: all var(--duration-normal) var(--easing-ease-out);
+	--transition-slow: all var(--duration-slow) var(--easing-ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--duration-fast: 0ms; /* @kind other */
+		--duration-normal: 0ms; /* @kind other */
+		--duration-slow: 0ms; /* @kind other */
+		--duration-slower: 0ms; /* @kind other */
+	}
+}
