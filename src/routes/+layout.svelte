@@ -11,8 +11,27 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<SiteNav />
-<main>
-	{@render children()}
-</main>
-<SiteFooter />
+<div class="main-layout base-grid">
+	<SiteNav />
+	<main class="base-grid">
+		{@render children()}
+	</main>
+	<SiteFooter />
+</div>
+
+<style>
+	:global(.main-header) {
+		grid-column: 1/ -1;
+		grid-row: 1;
+	}
+
+	main {
+		grid-column: 1 / -1;
+		grid-row: 2;
+	}
+
+	:global(.main-footer) {
+		grid-column: 1/ -1;
+		grid-row: 3;
+	}
+</style>

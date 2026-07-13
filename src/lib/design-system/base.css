@@ -68,7 +68,7 @@ h6 {
 	line-height: var(--line-height-tight);
 	color: var(--text-primary);
 	text-wrap: balance;
-	margin-bottom: var(--spacing-md);
+	/*margin-bottom: var(--spacing-md);*/
 }
 
 h1 {
@@ -179,6 +179,27 @@ select:focus-visible {
 		opacity: 1;
 		transform: scale(1);
 	}
+}
+
+/* ---- Layout grid helper: flexible outer margins + fixed content columns ---- */
+.base-grid {
+	display: grid;
+	grid-template-columns:
+		minmax(1.6rem, 1fr) repeat(6, minmax(3rem, 12.5rem))
+		minmax(1.6rem, 1fr);
+
+	@media (min-width: 820px) {
+		grid-template-columns:
+			minmax(16rem, 1fr) repeat(12, minmax(5rem, 12.5rem))
+			minmax(16rem, 1fr);
+	}
+}
+
+.main-layout {
+	display: grid;
+	grid-template-rows:
+		var(--headerHeight) auto
+		var(--footerHeight);
 }
 
 /* ---- The blueprint grid: a faint navy grid overlay used behind heroes ---- */

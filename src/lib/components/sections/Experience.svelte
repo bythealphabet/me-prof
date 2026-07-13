@@ -23,6 +23,8 @@
 	.bfd-section {
 		padding: clamp(8rem, 12vw, 15rem) clamp(2rem, 5vw, 8rem);
 		background: var(--background-dark);
+
+		grid-column: 1 / -1;
 	}
 	.bfd-timeline {
 		position: relative;

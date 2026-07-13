@@ -42,11 +42,18 @@
 	.bfd-palette-ctrl {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
 		gap: 1.2rem;
+
+		grid-column: -1/ -4;
 	}
 	.bfd-palette-ctrl__swatches {
 		display: flex;
 		gap: 0.6rem;
+
+		@media (min-width: 820px) {
+			flex-flow: row nowrap;
+		}
 	}
 	.bfd-palette-ctrl__sw {
 		width: 2rem;
@@ -66,6 +73,7 @@
 		border-color: var(--text-primary);
 	}
 	.bfd-palette-ctrl__theme {
+		width: 100%;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;

@@ -3,7 +3,7 @@
 	import profile from '$lib/data/profile.json';
 </script>
 
-<section class="bfd-section" id="about">
+<section class="base-grid bfd-section" id="about">
 	<div class="bfd-about">
 		<SectionHeading eyebrow="// About Me" align="center">Who I Am</SectionHeading>
 		<div class="bfd-about__copy">
@@ -26,10 +26,13 @@
 	.bfd-section {
 		padding: clamp(8rem, 12vw, 15rem) clamp(2rem, 5vw, 8rem);
 		background: var(--background-dark);
+
+		grid-column: 1 / -1;
 	}
 	.bfd-about {
 		max-width: 90rem;
 		margin: 0 auto;
+		grid-column: 1 / -1;
 	}
 	.bfd-about__copy {
 		margin-top: var(--spacing-xl);
