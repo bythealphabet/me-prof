@@ -3,43 +3,80 @@
 	import PaletteControl from './PaletteControl.svelte';
 	import profile from '$lib/data/profile.json';
 	import HamburgerMenu from '$lib/components/layout/hamburgerMenuButton.svelte';
+	import { onMount } from 'svelte';
+	import { buildIntroTimeline } from '$lib/animations/intro.svelte';
+	import { showHeader } from '$lib/stores/scrollStore';
+
+	let leftBracket: HTMLElement;
+	let nameEl: HTMLElement;
+	let rightBracket: HTMLElement;
+	let targetLinks: HTMLElement;
+	let targetPalletes = $state<HTMLElement>();
+	let darkmodeSwitch = $state<HTMLElement>();
+
+	onMount(() => {
+		if (!targetPalletes || !darkmodeSwitch) return;
+		buildIntroTimeline({
+			logo: [leftBracket, rightBracket, nameEl],
+			navLinks: targetLinks.children,
+			palette: Array.from(targetPalletes.children) as HTMLElement[],
+			themeSwitch: darkmodeSwitch
+		});
+	});
 
 	let scrolled = $state(false);
 	let menuOpen = $state(false);
 
 	const navLinks = [
-		{ id: '1', label: 'About', href: '#about' },
-		{ id: '2', label: 'Skills', href: '#skills' },
-		{ id: '3', label: 'Experience', href: '#experience' },
-		{ id: '4', label: 'Projects', href: 'projects' },
-		{ id: '5', label: 'Contact', href: '#contact' }
+		{ id: '1', label: 'About', href: '/#about' },
+		// { id: '2', label: 'Skills', href: '/#skills' },
+		{ id: '3', label: 'Experience', href: '/#experience' },
+		{ id: '4', label: 'Projects', href: '/projects' },
+		{ id: '5', label: 'Contact', href: '/#contact' }
 	];
 
 	$effect(() => {
-		const onScroll = () => (scrolled = window.scrollY > 30);
+		const onScroll = () => (scrolled = window.scrollY < 50);
 		window.addEventListener('scroll', onScroll);
 		return () => window.removeEventListener('scroll', onScroll);
 	});
 
 	// $effect(() => {
-	// 	const onKeydown = (e: KeyboardEvent) => {
-	// 		if (e.key === 'Escape') menuOpen = false;
+	// 	const handleScroll = () => {
+	// 		isAtTop = window.scrollY < 50; // Consider "at top" if within 50px
 	// 	};
-	// 	document.addEventListener('keydown', onKeydown);
-	// 	document.body.style.overflow = menuOpen ? 'hidden' : '';
-	// 	return () => document.removeEventListener('keydown', onKeydown);
+
+	// 	handleScroll(); // Check initial position
+	// 	window.addEventListener('scroll', handleScroll);
+	// 	return () => window.removeEventListener('scroll', handleScroll);
 	// });
+
+	$effect(() => {
+		const onKeydown = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') menuOpen = false;
+		};
+		document.addEventListener('keydown', onKeydown);
+		document.body.style.overflow = menuOpen ? 'hidden' : '';
+		return () => document.removeEventListener('keydown', onKeydown);
+	});
 </script>
 
-<header class="base-grid header" class:is-scrolled={scrolled}>
-	<a class="logo" href={resolve('/')}>&lt;{profile.firstName}<span>{profile.lastName}</span>/&gt;</a
-	>
+<header class="base-grid header" class:is-scrolled={scrolled} class:is-hidden={!$showHeader}>
+	<a href={resolve('/')} class="logo" aria-label="{profile.firstName} {profile.lastName} – Home">
+		<span class="logo-bracket bracket-left" bind:this={leftBracket}>&lt;</span><span
+			class="logo-name"
+			bind:this={nameEl}
+			><span class="logo-first">{profile.firstName}</span><span class="logo-last"
+				>{profile.lastName}</span
+			></span
+		><span class="logo-bracket bracket-right" bind:this={rightBracket}>/&gt;</span>
+	</a>
 	<span class="burger">
 		<HamburgerMenu bind:open={menuOpen} />
 	</span>
 	<div class="menu" class:is-open={menuOpen}>
 		<nav id="bfd-mobile-nav" class="nav">
-			<ul class="nav-links">
+			<ul class="nav-links" bind:this={targetLinks}>
 				{#each navLinks as link (link.id)}
 					<li><a onclick={() => (menuOpen = false)} href={link.href}>{link.label}</a></li>
 				{/each}
@@ -47,27 +84,36 @@
 		</nav>
 
 		<div class="bfd-nav__palette">
-			<PaletteControl />
+			<PaletteControl bind:targetPalletes bind:darkmodeSwitch />
 		</div>
 	</div>
 </header>
 
 <style lang="scss">
 	.header {
-		position: relative;
+		position: sticky;
+		top: 0;
 		z-index: 30;
+		transform: translate(0, 0);
+		background: var(--background-dark-alt);
 		transition:
 			background var(--duration-fast) ease,
 			box-shadow var(--duration-fast) ease,
 			backdrop-filter var(--duration-fast) ease;
 		grid-column: 1 / -1;
+		transition: transform var(--duration-fast) ease;
 	}
 
-	.header.is-scrolled {
+	/* .header.is-scrolled {
 		background: color-mix(in srgb, var(--background-dark-alt) 72%, transparent);
 		backdrop-filter: blur(14px);
 		-webkit-backdrop-filter: blur(14px);
 		box-shadow: 0 8px 30px rgba(11, 28, 48, 0.25);
+		transform: translate(0, 0);
+	} */
+
+	.header.is-hidden {
+		transform: translate(0, -100%);
 	}
 
 	.logo {
@@ -81,12 +127,44 @@
 
 		grid-column: 2 / 4;
 		align-self: center;
+		display: flex;
+		align-items: center;
 
 		@media (min-width: 1175px) {
 			font-size: 2.6rem;
 		}
 	}
-	.logo span {
+
+	.logo-bracket,
+	.logo-name {
+		display: inline-block;
+	}
+
+	.bracket-left {
+		translate: x-50px;
+		opacity: 0;
+		transition:
+			translate var(--duration-normal) var(--easing-ease-out),
+			opacity var(--duration-fast) var(--easing-ease-out);
+	}
+
+	.bracket-right {
+		translate: x50px;
+		opacity: 0;
+		transition:
+			translate var(--duration-normal) var(--easing-ease-out),
+			opacity var(--duration-fast) var(--easing-ease-out);
+	}
+
+	.logo-name {
+		translate: x0px;
+		opacity: 0;
+		transition:
+			translate var(--duration-normal) var(--easing-ease-out),
+			opacity var(--duration-fast) var(--easing-ease-out);
+	}
+
+	.logo-last {
 		color: var(--primary-teal-pale);
 	}
 
@@ -139,6 +217,7 @@
 			backdrop-filter: none;
 			-webkit-backdrop-filter: none;
 			box-shadow: none;
+			overflow: initial;
 
 			display: flex;
 			justify-content: space-between;
@@ -160,6 +239,7 @@
 			padding: 0;
 		}
 	}
+
 	.nav a {
 		padding: 1.2rem 0;
 		font-size: 2rem;
@@ -177,6 +257,11 @@
 
 		.nav-links {
 			flex-flow: row nowrap;
+
+			li {
+				translate: 0 -10px;
+				opacity: 0;
+			}
 		}
 
 		.nav {

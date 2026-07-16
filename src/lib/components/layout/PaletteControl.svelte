@@ -9,6 +9,11 @@
 		type Palette
 	} from '$lib/state/theme.svelte';
 
+	let {
+		targetPalletes = $bindable(),
+		darkmodeSwitch = $bindable()
+	}: { targetPalletes?: HTMLElement; darkmodeSwitch?: HTMLElement } = $props();
+
 	const PALETTES: { id: Palette; label: string; dot: string }[] = [
 		{ id: 'blue', label: 'Blue', dot: '#2563eb' },
 		{ id: 'green', label: 'Ocean', dot: '#0d9488' },
@@ -17,7 +22,7 @@
 </script>
 
 <div class="bfd-palette-ctrl">
-	<div class="bfd-palette-ctrl__swatches">
+	<div class="bfd-palette-ctrl__swatches" bind:this={targetPalletes}>
 		{#each PALETTES as p (p.id)}
 			<button
 				class="bfd-palette-ctrl__sw"
@@ -29,7 +34,12 @@
 			></button>
 		{/each}
 	</div>
-	<button class="bfd-palette-ctrl__theme" onclick={toggleTheme} aria-label="Toggle dark / light">
+	<button
+		class="bfd-palette-ctrl__theme"
+		onclick={toggleTheme}
+		aria-label="Toggle dark / light"
+		bind:this={darkmodeSwitch}
+	>
 		{#if getTheme() === 'dark'}
 			<Moon size={18} />
 		{:else}
@@ -65,6 +75,8 @@
 		transition:
 			transform var(--duration-fast) ease,
 			border-color var(--duration-fast) ease;
+		translate: 0 -30px;
+		opacity: 0;
 	}
 	.bfd-palette-ctrl__sw:hover {
 		transform: scale(1.15);
@@ -84,5 +96,8 @@
 		cursor: pointer;
 		background: color-mix(in srgb, var(--background-card) 80%, var(--primary-blue) 20%);
 		color: var(--primary-teal-pale, var(--primary-blue-pale));
+		translate: 20px 0;
+		opacity: 0;
+		rotate: 45deg;
 	}
 </style>

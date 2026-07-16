@@ -2,14 +2,16 @@
 	import type { Snippet } from 'svelte';
 
 	type Variant = 'tag' | 'solid' | 'outline';
-	type Tone = 'default' | 'coral' | 'gold';
-	type Size = 'sm' | 'md';
+	type Tone = 'default' | 'coral' | 'gold' | 'flat';
+	type Size = 'sm' | 'md' | 'lg';
 
 	let {
 		variant = 'tag',
 		tone = 'default',
 		size = 'sm',
 		dot = false,
+		logo = '',
+		imgUrl = '',
 		class: className = '',
 		children,
 		...rest
@@ -18,6 +20,8 @@
 		tone?: Tone;
 		size?: Size;
 		dot?: boolean;
+		logo?: string;
+		imgUrl?: string;
 		class?: string;
 		children?: Snippet;
 		[key: string]: unknown;
@@ -38,6 +42,8 @@
 
 <span class={classes} {...rest}>
 	{#if dot}<span class="bfd-badge__dot"></span>{/if}
+	{#if logo}<img class="bfd-badge__logo" src={logo} alt="" aria-hidden="true" />{/if}
+	{#if imgUrl}<img class="bfd-badge__logo" src={imgUrl} alt={imgUrl} aria-hidden="true" />{/if}
 	{@render children?.()}
 </span>
 
@@ -56,9 +62,15 @@
 		border-radius: var(--radius-pill);
 		white-space: nowrap;
 	}
+
 	.bfd-badge--md {
 		font-size: 1.3rem;
 		padding: 0.7rem 1.4rem;
+	}
+
+	.bfd-badge--lg {
+		font-size: 2.4rem;
+		padding: 0.8rem 1.6rem;
 	}
 
 	.bfd-badge--tag {
@@ -93,5 +105,13 @@
 		height: 0.7rem;
 		border-radius: 50%;
 		background: currentColor;
+	}
+
+	.bfd-badge__logo {
+		width: 1.4em;
+		height: 1.4em;
+		object-fit: contain;
+		border-radius: 50%;
+		flex-shrink: 0;
 	}
 </style>

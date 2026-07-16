@@ -1,9 +1,16 @@
 <script lang="ts">
 	import SectionHeading from '$lib/components/ui/SectionHeading.svelte';
 	import experience from '$lib/data/experience.json';
+	import { onMount } from 'svelte';
+	import { sectionScroll } from '$lib/animations/homescroll.svelte';
+
+	let section: HTMLElement;
+	onMount(() => {
+		sectionScroll(section);
+	});
 </script>
 
-<section class="bfd-section" id="experience">
+<section class="bfd-section" id="experience" bind:this={section}>
 	<SectionHeading eyebrow="// Where I've Been" align="center">Experience</SectionHeading>
 	<ol class="bfd-timeline" role="list">
 		{#each experience as entry (entry.period + entry.title)}
@@ -57,7 +64,7 @@
 	}
 	.bfd-timeline__role {
 		font-size: var(--font-size-h3);
-		color: var(--text-primary);
+		color: var(--text-tertiary);
 		margin: var(--spacing-xs) 0 var(--spacing-sm);
 	}
 	.bfd-timeline__summary {

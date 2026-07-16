@@ -4,11 +4,18 @@
 	import ProjectCard from '$lib/components/ui/ProjectCard.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import { projects } from '$lib/data/projects';
+	import { onMount } from 'svelte';
+	import { sectionScroll } from '$lib/animations/homescroll.svelte';
 
 	const preview = $derived(projects.slice(0, 3));
+
+	let section: HTMLElement;
+	onMount(() => {
+		sectionScroll(section);
+	});
 </script>
 
-<section class="bfd-section bfd-section--alt" id="projects">
+<section class="bfd-section bfd-section--alt" id="projects" bind:this={section}>
 	<SectionHeading eyebrow="// Selected Work" align="center">Projects</SectionHeading>
 	<div class="bfd-projects-grid">
 		{#each preview as project (project.meta.slug)}
@@ -28,6 +35,7 @@
 	.bfd-section {
 		padding: clamp(8rem, 12vw, 15rem) clamp(2rem, 5vw, 8rem);
 		background: var(--background-dark);
+		opacity: 0;
 
 		grid-column: 1 / -1;
 	}
