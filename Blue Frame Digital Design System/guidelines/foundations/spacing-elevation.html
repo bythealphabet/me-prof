@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Elevation" subtitle="Ambient navy-tinted shadows — never pure black" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark-alt); padding: 30px 24px; }
+  .row { display:flex; gap: 26px; }
+  .item { text-align:center; }
+  .box { width: 120px; height: 80px; background: var(--background-card); border-radius: var(--radius-md); }
+  .nm { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 14px; }
+  .vl { font-family: var(--font-accent); font-size: 9.5px; color: var(--text-light); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 4px 16px rgba(11,28,48,.2)"></div><div class="nm">shadow-card</div><div class="vl">resting surface</div></div>
+    <div class="item"><div class="box" style="box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 20px 40px rgba(11,28,48,.28)"></div><div class="nm">shadow-card-hover</div><div class="vl">lifted on hover</div></div>
+    <div class="item"><div class="box" style="box-shadow:0 20px 40px rgba(11,28,48,.06)"></div><div class="nm">shadow-float</div><div class="vl">menus / overlays</div></div>
+  </div>
+</body>
+</html>

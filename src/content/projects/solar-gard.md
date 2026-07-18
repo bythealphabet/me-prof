@@ -7,6 +7,7 @@ date: '2020-01-01'
 repo: ''
 demo: 'https://solar-gard.com/'
 cover: ''
+imgUrl: '/projects/solargard.png'
 ---
 
 ## Overview

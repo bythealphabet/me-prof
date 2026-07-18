@@ -23,6 +23,7 @@
 				title={project.meta.title}
 				description={project.meta.summary}
 				href={resolve('/projects/[slug]', { slug: project.meta.slug })}
+				imgUrl={project.meta.imgUrl}
 			/>
 		{/each}
 	</div>

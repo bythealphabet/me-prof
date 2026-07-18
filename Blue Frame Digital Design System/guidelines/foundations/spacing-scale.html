@@ -1,0 +1,28 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Spacing Scale" subtitle="xs 5px → 3xl 60px · rem on a 10px base" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark); padding: 24px; }
+  .row { display:flex; align-items:flex-end; gap: 20px; }
+  .item { text-align:center; }
+  .bar { background: linear-gradient(160deg, #2563eb, #1e3a8a); border-radius: var(--radius-sm); width: 28px; }
+  .nm { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 8px; }
+  .vl { font-family: var(--font-accent); font-size: 10px; color: var(--text-light); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="bar" style="height:5px"></div><div class="nm">xs</div><div class="vl">5</div></div>
+    <div class="item"><div class="bar" style="height:10px"></div><div class="nm">sm</div><div class="vl">10</div></div>
+    <div class="item"><div class="bar" style="height:15px"></div><div class="nm">md</div><div class="vl">15</div></div>
+    <div class="item"><div class="bar" style="height:20px"></div><div class="nm">lg</div><div class="vl">20</div></div>
+    <div class="item"><div class="bar" style="height:30px"></div><div class="nm">xl</div><div class="vl">30</div></div>
+    <div class="item"><div class="bar" style="height:40px"></div><div class="nm">2xl</div><div class="vl">40</div></div>
+    <div class="item"><div class="bar" style="height:60px"></div><div class="nm">3xl</div><div class="vl">60</div></div>
+  </div>
+</body>
+</html>

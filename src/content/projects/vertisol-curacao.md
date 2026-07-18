@@ -7,6 +7,7 @@ date: '2020-06-01'
 repo: ''
 demo: 'https://vertisolcuracao.com/'
 cover: ''
+imgUrl: '/projects/vertisol.png'
 ---
 
 ## Overview

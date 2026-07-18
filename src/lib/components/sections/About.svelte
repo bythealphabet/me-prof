@@ -5,22 +5,48 @@
 	import { sectionScroll } from '$lib/animations/homescroll.svelte';
 	import CanvasImageWrap from '$lib/components/layout/canvasImageWrap.svelte';
 
-	let section: HTMLElement;
+	let section: HTMLElement | undefined = $state();
+	let canvasComponent: { resetGame: () => void } | null = $state(null);
+
+	// Game reactive states
+	let gameCompleted = $state(false);
 
 	onMount(() => {
-		sectionScroll(section);
+		if (section) sectionScroll(section);
 	});
+
+	// Callback dispatched by the child Canvas when matching occurs
+	function handleGameMatch(matched: boolean) {
+		gameCompleted = matched;
+	}
+
+	// If scrolling begins, reset the game state and snap the avatar back
+	// function handleWindowScroll() {
+	// 	if (gameCompleted) {
+	// 		gameCompleted = false;
+	// 		canvasComponent?.resetGame();
+	// 	}
+	// }
 </script>
+
+<!-- <svelte:window onscroll={handleWindowScroll} /> -->
 
 <section class="base-grid bfd-section" id="about" bind:this={section}>
 	<div class="base-grid bfd-about">
 		<div class="bfd-about__title">
 			<SectionHeading eyebrow="// About Me" align="left">Who I Am</SectionHeading>
 		</div>
+
 		<article class="bfd-about__copy">
 			<div class="desktop">
-				<CanvasImageWrap bioParagraphs={profile.bio} />
+				<!-- Passing our Svelte 5 callback handler to trigger state -->
+				<CanvasImageWrap
+					bind:this={canvasComponent}
+					bioParagraphs={profile.bio}
+					onTargetReached={handleGameMatch}
+				/>
 			</div>
+
 			<div class="mobile">
 				<div class="img-box">
 					<img class="img" src="/profile-img/me-img.png" alt="" aria-hidden="true" />
@@ -30,13 +56,20 @@
 				{/each}
 			</div>
 		</article>
-		<div class="bfd-about__facts">
-			<h4>Outside of code</h4>
-			<ul role="list">
-				{#each profile.funFacts as fact (fact)}
-					<li>{fact}</li>
-				{/each}
-			</ul>
+
+		<!--
+			Animated Hobbies Card (Banner format):
+			Fades & slides up cleanly from the bottom of the section when the game succeeds
+		-->
+		<div class="bfd-about__facts" class:visible={gameCompleted || !section}>
+			<div class="facts-card">
+				<h4>Outside of code</h4>
+				<ul role="list">
+					{#each profile.funFacts as fact (fact)}
+						<li>{fact}</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
 	</div>
 </section>
@@ -46,18 +79,15 @@
 		opacity: 0;
 		min-height: 100vh;
 		background: var(--background-dark);
-
 		grid-column: 1 / -1;
+		position: relative;
 	}
 
 	.bfd-about {
 		display: grid;
-		grid-template-rows: 4.8rem 10rem auto 5rem auto 10rem;
+		grid-template-rows: 4.8rem 10rem auto 5rem minmax(auto, 10rem) 20rem;
 		grid-column: 1 / -1;
-
-		@media (min-width: 820px) {
-			grid-template-rows: 4.8rem 10rem auto 5rem auto 10rem;
-		}
+		height: 100%;
 	}
 
 	.bfd-about__title {
@@ -102,16 +132,41 @@
 
 	.desktop {
 		display: none;
+		height: 520px; /* Enhanced canvas spatial layout height */
 
 		@media (min-width: 768px) {
 			display: grid;
 		}
 	}
 
+	/* Hobbies card container transition rules */
 	.bfd-about__facts {
-		margin-top: var(--spacing-2xl);
 		grid-column: 3 / -3;
-		grid-row: 5;
+		grid-row: 6;
+		opacity: 0;
+		transform: translateY(30px);
+		transition:
+			opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+			transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+		pointer-events: none;
+
+		&.visible {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: all;
+		}
+	}
+
+	/* Elegant floating banner design */
+	.facts-card {
+		/* background: rgba(255, 255, 255, 0.03); */
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 16px;
+		padding: var(--spacing-xl) var(--spacing-2xl);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+		background: var(--background-card);
 	}
 
 	.bfd-about__facts h4 {
@@ -132,9 +187,9 @@
 		grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 		gap: var(--spacing-sm) var(--spacing-lg);
 	}
+
 	.bfd-about__facts li {
 		color: var(--text-secondary);
-		font-size: 2rem;
 		font-size: clamp(1.6rem, 1.6vw, 1.9rem);
 		line-height: var(--line-height-normal);
 	}

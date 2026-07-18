@@ -7,6 +7,7 @@ date: '2026-01-01'
 repo: ''
 demo: 'https://blueframe.digital/'
 cover: ''
+imgUrl: '/projects/blueframedigital.png'
 ---
 
 ## Overview

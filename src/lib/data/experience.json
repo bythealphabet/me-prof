@@ -10,18 +10,23 @@
 		"summary": "Worked as a Front-end Developer, setting up modern build tooling, improving web performance and accessibility, and translating high-fidelity designs into production-ready code. Contributed to projects for clients including National Geographic, DPG Media, and SourceUp."
 	},
 	{
-		"period": "2020",
-		"title": "First Freelance Projects",
-		"summary": "Built and launched websites for Solar Gard Curaçao and Vertisol Curaçao—two client projects that remain live today."
+		"period": "2019 — 2021",
+		"title": "Freelancing & Social Media Marketing",
+		"summary": "Worked with local businesses to strengthen their online presence through website development, digital marketing, and social media. Clients included Solar Gard Curaçao, Vertisol Curaçao, HIC Office Furniture, and Selling Easier."
 	},
 	{
 		"period": "2018",
-		"title": "Discovered JavaScript",
-		"summary": "Started with HTML and CSS before discovering JavaScript, which sparked my passion for web development."
+		"title": "First Freelance Projects",
+		"summary": "Designed and launched websites for Solar Gard Curaçao and Vertisol Curaçao—two client projects that remain live today and marked the beginning of my professional journey as a web developer."
 	},
 	{
-		"period": "Before 2019",
-		"title": "A Little Bit of Everything",
-		"summary": "Worked in marketing agencies, hospitality, and restaurant management while studying at university and exploring a career in construction. These experiences shaped my communication, teamwork, and problem-solving skills long before I became a developer."
+		"period": "2017",
+		"title": "Hospital Nobo Otrobanda & Discovering JavaScript",
+		"summary": "While working on the construction of Hospital Nobo Otrobanda with Ballast Nedam, I began teaching myself web development. Starting with HTML and CSS, I soon discovered JavaScript, which sparked my passion for building for the web."
+	},
+	{
+		"period": "Before 2017",
+		"title": "Finding My Path",
+		"summary": "Worked in marketing agencies, hospitality, and restaurant management while studying at university and exploring a career in construction. Those experiences strengthened my communication, teamwork, and problem-solving skills—qualities I continue to rely on as a developer."
 	}
 ]

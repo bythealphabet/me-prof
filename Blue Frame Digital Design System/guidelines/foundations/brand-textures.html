@@ -1,0 +1,20 @@
+<!-- @dsCard group="Brand" viewport="700x220" name="Blueprint Textures" subtitle="The 50px navy grid and 45° draft hatch behind heroes & cards" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark); padding: 24px; display:flex; gap: 18px; }
+  .tex { flex:1; height: 150px; border-radius: var(--radius-md); position:relative; overflow:hidden; box-shadow: var(--shadow-card); }
+  .grid { background: var(--background-dark-alt); }
+  .hatch { background: var(--background-card); }
+  .lbl { position:absolute; bottom: 10px; left: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); z-index:2; }
+</style>
+</head>
+<body>
+  <div class="tex grid bfd-blueprint-grid"><span class="lbl">.bfd-blueprint-grid</span></div>
+  <div class="tex hatch bfd-hatch"><span class="lbl">.bfd-hatch</span></div>
+</body>
+</html>

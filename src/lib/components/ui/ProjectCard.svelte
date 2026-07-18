@@ -8,6 +8,7 @@
 		cta = 'View project →',
 		tilt = true,
 		icon,
+		imgUrl,
 		class: className = '',
 		...rest
 	}: {
@@ -17,6 +18,7 @@
 		cta?: string;
 		tilt?: boolean;
 		icon?: Snippet;
+		imgUrl?: string;
 		class?: string;
 		[key: string]: unknown;
 	} = $props();
@@ -40,20 +42,26 @@
 {#if href}
 	<!-- Callers must pre-resolve internal hrefs with resolve()/asset() from $app/paths. -->
 	<!-- eslint-disable svelte/no-navigation-without-resolve -->
-	<a
-		bind:this={el}
-		{href}
-		class={['bfd-service', className].filter(Boolean).join(' ')}
-		style="transform: {transform}"
-		onmousemove={handleMove}
-		onmouseleave={reset}
-		{...rest}
-	>
-		{#if icon}<span class="bfd-service__icon">{@render icon()}</span>{/if}
-		<h3 class="bfd-service__title">{title}</h3>
-		<p class="bfd-service__desc">{description}</p>
-		<span class="bfd-service__more">{cta}</span>
-	</a>
+	<div class={['container', className].filter(Boolean).join(' ')}>
+		<div class="img-wrapper">
+			<img src={imgUrl} alt="" />
+		</div>
+		<div class="content">
+			<h3 class="title">{title}</h3>
+			<p class="desc">{description}</p>
+			<span class="more">{cta}</span>
+		</div>
+		<a
+			bind:this={el}
+			{href}
+			style="transform: {transform}"
+			onmousemove={handleMove}
+			onmouseleave={reset}
+			{...rest}
+		>
+			{#if icon}<span class="bfd-service__icon">{@render icon()}</span>{/if}
+		</a>
+	</div>
 	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {:else}
 	<button
@@ -72,11 +80,9 @@
 	</button>
 {/if}
 
-<style>
-	.bfd-service {
+<style lang="scss">
+	.container {
 		position: relative;
-		display: flex;
-		flex-direction: column;
 		height: 100%;
 		min-height: var(--card-size-h, 38rem);
 		text-align: left;
@@ -85,10 +91,13 @@
 			color-mix(in srgb, var(--background-card) 88%, white 12%) 0%,
 			var(--background-card) 55%
 		);
+		display: grid;
+		grid-template-columns: var(--spacing-xl) 1fr var(--spacing-xl);
+		grid-template-rows: var(--spacing-xl) 1fr var(--spacing-xl);
 		border: none;
 		border-radius: var(--radius-sm);
 		box-shadow: var(--shadow-card);
-		padding: var(--spacing-xl);
+		/*padding: var(--spacing-xl);*/
 		overflow: hidden;
 		cursor: pointer;
 		font-family: inherit;
@@ -100,7 +109,7 @@
 			box-shadow 800ms var(--easing-ease-out),
 			transform 250ms var(--easing-ease-out);
 	}
-	.bfd-service::before {
+	.container::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -115,7 +124,7 @@
 		);
 		transition: opacity var(--duration-fast) ease;
 	}
-	.bfd-service::after {
+	.container::after {
 		content: '';
 		position: absolute;
 		top: -50%;
@@ -128,25 +137,49 @@
 		transform: translateX(-100%);
 		transition: transform 0.8s var(--easing-ease-out);
 	}
-	.bfd-service:hover {
+	.container:hover {
 		box-shadow: var(--shadow-card-hover);
 	}
-	.bfd-service:hover::before {
+	.container:hover::before {
 		opacity: 0;
 	}
-	.bfd-service:hover::after {
+	.container:hover::after {
 		transform: translateX(100%);
 	}
-	.bfd-service:focus-visible {
+	.container:focus-visible {
 		outline: 3px solid var(--primary-teal, var(--primary-blue-light));
 		outline-offset: 3px;
 	}
 
-	.bfd-service > * {
+	.container > * {
 		position: relative;
 		z-index: 2;
 	}
-	.bfd-service__icon {
+
+	.content {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	a {
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+	}
+
+	.img-wrapper {
+		display: flex;
+		grid-column: 2;
+		grid-row: 2;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.icon {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -157,7 +190,7 @@
 		background: color-mix(in srgb, var(--primary-blue) 28%, transparent);
 		color: var(--primary-teal-bright, var(--primary-blue-bright));
 	}
-	.bfd-service__title {
+	.title {
 		font-family: var(--font-heading);
 		font-weight: 700;
 		font-size: clamp(2.4rem, 2.5vw, 3rem);
@@ -165,7 +198,7 @@
 		margin: 0 0 var(--spacing-md);
 		transform: translateZ(10px);
 	}
-	.bfd-service__desc {
+	.desc {
 		font-family: var(--font-body);
 		color: var(--text-tertiary);
 		line-height: var(--line-height-relaxed);
@@ -174,7 +207,7 @@
 		flex: 1;
 		transform: translateZ(5px);
 	}
-	.bfd-service__more {
+	.more {
 		margin-top: var(--spacing-lg);
 		font-family: var(--font-mono);
 		font-size: 1.4rem;
@@ -182,11 +215,11 @@
 		color: var(--accent-coral, var(--primary-blue-bright));
 		transition: color var(--duration-fast) ease;
 	}
-	.bfd-service:hover .bfd-service__more {
+	.container:hover .more {
 		color: var(--primary-teal-bright, var(--primary-blue-light));
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.bfd-service {
+		.container {
 			transform: none !important;
 		}
 	}

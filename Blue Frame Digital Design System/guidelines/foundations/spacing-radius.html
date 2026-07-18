@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Radius Scale" subtitle="Small, architectural corners — 4 / 8 / 12 / 16px + pill" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark); padding: 24px; }
+  .row { display:flex; gap: 18px; align-items:flex-start; }
+  .item { text-align:center; }
+  .box { width: 72px; height: 72px; background: var(--background-card); box-shadow: var(--shadow-card); border-top: 2px solid var(--primary-blue-light); }
+  .nm { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); margin-top: 9px; }
+  .vl { font-family: var(--font-accent); font-size: 10px; color: var(--text-light); }
+  .pill { width: 110px; height: 40px; border-radius: 999px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:4px"></div><div class="nm">sm</div><div class="vl">4px</div></div>
+    <div class="item"><div class="box" style="border-radius:8px"></div><div class="nm">md</div><div class="vl">8px</div></div>
+    <div class="item"><div class="box" style="border-radius:12px"></div><div class="nm">lg</div><div class="vl">12px</div></div>
+    <div class="item"><div class="box" style="border-radius:16px"></div><div class="nm">xl</div><div class="vl">16px</div></div>
+    <div class="item"><div class="box pill"></div><div class="nm">pill</div><div class="vl">999px</div></div>
+  </div>
+</body>
+</html>
