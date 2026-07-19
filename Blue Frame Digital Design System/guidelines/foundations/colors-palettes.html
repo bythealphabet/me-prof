@@ -1,0 +1,54 @@
+<!-- @dsCard group="Colors" viewport="700x250" name="Three Palettes" subtitle="Blue (default), Ocean Green & Workshop Wood — swap via data-palette" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark); padding: 24px; }
+  .pal { margin-bottom: 16px; }
+  .pal:last-child { margin-bottom: 0; }
+  .head { display:flex; align-items:baseline; gap:10px; margin-bottom: 8px; }
+  .head h4 { margin:0; font-family: var(--font-mono); font-size: 14px; font-weight:700; }
+  .head code { font-family: var(--font-accent); font-size: 10px; color: var(--text-light); letter-spacing:.04em; }
+  .swatches { display:flex; gap:8px; }
+  .s { width: 56px; height: 40px; border-radius: var(--radius-sm); }
+</style>
+</head>
+<body>
+  <div class="pal">
+    <div class="head"><h4 style="color:#60a5fa">Blue</h4><code>data-palette="blue" · default</code></div>
+    <div class="swatches">
+      <div class="s" style="background:#0a0e1a"></div>
+      <div class="s" style="background:#152340"></div>
+      <div class="s" style="background:#1e3a8a"></div>
+      <div class="s" style="background:#2563eb"></div>
+      <div class="s" style="background:#60a5fa"></div>
+      <div class="s" style="background:#f97316"></div>
+    </div>
+  </div>
+  <div class="pal">
+    <div class="head"><h4 style="color:#2dd4bf">Ocean Green</h4><code>data-palette="green"</code></div>
+    <div class="swatches">
+      <div class="s" style="background:#07111a"></div>
+      <div class="s" style="background:#122b3d"></div>
+      <div class="s" style="background:#0f766e"></div>
+      <div class="s" style="background:#0d9488"></div>
+      <div class="s" style="background:#2dd4bf"></div>
+      <div class="s" style="background:#f97316"></div>
+    </div>
+  </div>
+  <div class="pal">
+    <div class="head"><h4 style="color:#eab308">Workshop Wood</h4><code>data-palette="wood"</code></div>
+    <div class="swatches">
+      <div class="s" style="background:#1a1410"></div>
+      <div class="s" style="background:#2d241c"></div>
+      <div class="s" style="background:#78350f"></div>
+      <div class="s" style="background:#b45309"></div>
+      <div class="s" style="background:#eab308"></div>
+      <div class="s" style="background:#ea580c"></div>
+    </div>
+  </div>
+</body>
+</html>

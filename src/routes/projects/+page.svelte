@@ -18,6 +18,7 @@
 				title={project.meta.title}
 				description={project.meta.summary}
 				href={resolve('/projects/[slug]', { slug: project.meta.slug })}
+				imgUrl={project.meta.imgUrl}
 			/>
 		{/each}
 	</div>
@@ -27,6 +28,7 @@
 	.bfd-section {
 		padding: clamp(12rem, 14vw, 18rem) clamp(2rem, 5vw, 8rem) clamp(8rem, 12vw, 15rem);
 		background: var(--background-dark);
+		grid-column: 1 / -1;
 	}
 	.bfd-projects-grid {
 		display: grid;

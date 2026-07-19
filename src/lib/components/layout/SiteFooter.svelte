@@ -4,7 +4,7 @@
 	import profile from '$lib/data/profile.json';
 </script>
 
-<footer class="bfd-footer">
+<footer class="main-footer bfd-footer">
 	<div class="bfd-footer__grid">
 		<div class="bfd-footer__brand">
 			<p class="bfd-footer__logo">&lt;{profile.firstName}<span>{profile.lastName}</span>/&gt;</p>
@@ -36,7 +36,7 @@
 			<ul role="list">
 				<li>
 					<a href={asset('/resume.pdf')} target="_blank" rel="noopener">
-						<Mail size={14} /> Download CV
+						<!-- <Mail size={14} /> Download CV -->
 					</a>
 				</li>
 			</ul>

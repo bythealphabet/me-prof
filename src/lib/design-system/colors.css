@@ -69,7 +69,7 @@ html[data-palette='blue'][data-theme='light'] {
 	--background-dark-alt: #e4ecff;
 	--background-card: #ffffff;
 
-	--text-primary: #0b1c30;
+	--text-primary: #e0e7ff;
 	--text-secondary: #1e3a8a;
 	--text-tertiary: #374151;
 	--text-light: #6b7280;
@@ -134,7 +134,8 @@ html[data-palette='green'][data-theme='light'] {
 	--background-dark-alt: #ccfbf1;
 	--background-card: #ffffff;
 
-	--text-primary: #0b1c30;
+	/*--text-primary: #0b1c30;*/
+	--text-primary: #e0e7ff;
 	--text-secondary: #0f766e;
 	--text-tertiary: #374151;
 	--text-light: #57534e;
@@ -199,7 +200,8 @@ html[data-palette='wood'][data-theme='light'] {
 	--background-dark-alt: #f0e6d8;
 	--background-card: #fffefb;
 
-	--text-primary: #0b1c30;
+	/*--text-primary: #0b1c30;*/
+	--text-primary: #e0e7ff;
 	--text-secondary: #78350f;
 	--text-tertiary: #57534e;
 	--text-light: #78716c;

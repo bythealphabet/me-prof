@@ -17,8 +17,8 @@
 	--section-padding-mobile: 80px;
 
 	/* Layout chrome */
-	--headerHeight: 50px;
-	--footerHeight: 10rem;
+	--headerHeight: 10rem;
+	--footerHeight: 30rem;
 
 	/* Service card geometry */
 	--card-size-h: 38rem;

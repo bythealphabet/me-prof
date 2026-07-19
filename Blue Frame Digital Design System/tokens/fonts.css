@@ -1,0 +1,16 @@
+/* =============================================================================
+   Blue Frame Digital — WEBFONTS
+   -----------------------------------------------------------------------------
+   Two families carry the whole identity:
+
+   • Courier Prime  — the "blueprint draft". A faithful, web-reliable stand-in
+     for the production site's system 'Courier New' (headings, body, mono).
+   • Plus Jakarta Sans — the "polished result". UI chrome, uppercase labels.
+
+   ⚠ FONT SUBSTITUTION: production uses the OS font 'Courier New'. We load
+   'Courier Prime' (Google Fonts) so the typewriter texture renders the same
+   on every machine. If you have a licensed Courier New webfont you prefer,
+   drop it in and update the @font-face / token stacks.
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');

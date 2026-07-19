@@ -9,6 +9,7 @@ export type ProjectMeta = {
 	repo?: string;
 	demo?: string;
 	cover?: string;
+	imgUrl?: string;
 };
 
 type ProjectModule = {

@@ -1,18 +1,62 @@
 [
 	{
-		"category": "Frontend",
-		"skills": ["SvelteKit", "React", "TypeScript", "JavaScript", "HTML5", "CSS3"]
+		"category": "Frameworks & Libraries",
+		"skills": [
+			{ "name": "SvelteKit", "logo": "svelte.dev" },
+			{ "name": "React", "logo": "react.dev" },
+			{ "name": "TypeScript", "logo": "typescriptlang.org" },
+			{ "name": "JavaScript", "logo": "javascript.com" },
+			{
+				"name": "HTML5",
+				"logo": null,
+				"imgUrl": "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png"
+			}
+		]
 	},
 	{
 		"category": "Styling",
-		"skills": ["Tailwind CSS", "Emotion.js", "SASS", "CSS Grid", "Flexbox"]
+		"skills": [
+			{
+				"name": "CSS3",
+				"logo": null,
+				"imgUrl": "/CSS3_logo.svg.webp"
+			},
+
+			{
+				"name": "CSS Grid",
+				"logo": null,
+				"imgUrl": "/CSS3_logo.svg.webp"
+			},
+			{
+				"name": "Flexbox",
+				"logo": null,
+				"imgUrl": "/CSS3_logo.svg.webp"
+			},
+			{ "name": "Tailwind CSS", "logo": "tailwindcss.com" },
+			{ "name": "Emotion.js", "logo": "emotion.sh" },
+			{ "name": "SASS", "logo": "sass-lang.com" }
+		]
 	},
 	{
 		"category": "Backend",
-		"skills": ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs"]
+		"skills": [
+			{ "name": "Node.js", "logo": "nodejs.org" },
+			{ "name": "Express.js", "logo": "expressjs.com" },
+			{ "name": "MongoDB", "logo": "mongodb.com" },
+			{ "name": "PostgreSQL", "logo": "postgresql.org" },
+			{ "name": "REST APIs", "logo": null },
+			{ "name": "Azure", "logo": "azure.microsoft.com" }
+		]
 	},
 	{
-		"category": "Tools",
-		"skills": ["Git", "Webpack", "Vite", "Docker", "Figma", "Digital Ocean"]
+		"category": "Development and Design Tools",
+		"skills": [
+			{ "name": "Git", "logo": "git-scm.com" },
+			{ "name": "Webpack", "logo": "webpack.js.org" },
+			{ "name": "Vite", "logo": "vitejs.dev" },
+			{ "name": "Docker", "logo": "docker.com" },
+			{ "name": "Figma", "logo": "figma.com" },
+			{ "name": "Digital Ocean", "logo": "digitalocean.com" }
+		]
 	}
 ]

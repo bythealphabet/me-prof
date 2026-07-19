@@ -8,6 +8,8 @@
 		cta = 'View project →',
 		tilt = true,
 		icon,
+		imgUrl,
+		alt = '',
 		class: className = '',
 		...rest
 	}: {
@@ -17,6 +19,8 @@
 		cta?: string;
 		tilt?: boolean;
 		icon?: Snippet;
+		imgUrl?: string;
+		alt?: string;
 		class?: string;
 		[key: string]: unknown;
 	} = $props();
@@ -43,16 +47,24 @@
 	<a
 		bind:this={el}
 		{href}
-		class={['bfd-service', className].filter(Boolean).join(' ')}
+		class={['card', className].filter(Boolean).join(' ')}
 		style="transform: {transform}"
 		onmousemove={handleMove}
 		onmouseleave={reset}
 		{...rest}
 	>
-		{#if icon}<span class="bfd-service__icon">{@render icon()}</span>{/if}
-		<h3 class="bfd-service__title">{title}</h3>
-		<p class="bfd-service__desc">{description}</p>
-		<span class="bfd-service__more">{cta}</span>
+		{#if imgUrl}
+			<div class="media">
+				<!-- Decorative: the title right below already names the project. -->
+				<img src={imgUrl} {alt} loading="lazy" decoding="async" />
+			</div>
+		{/if}
+		<div class="body">
+			{#if icon}<span class="icon">{@render icon()}</span>{/if}
+			<h3 class="title">{title}</h3>
+			<p class="desc">{description}</p>
+			<span class="more">{cta}</span>
+		</div>
 	</a>
 	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {:else}
@@ -72,13 +84,12 @@
 	</button>
 {/if}
 
-<style>
-	.bfd-service {
+<style lang="scss">
+	.card {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		min-height: var(--card-size-h, 38rem);
 		text-align: left;
 		background: linear-gradient(
 			160deg,
@@ -88,9 +99,7 @@
 		border: none;
 		border-radius: var(--radius-sm);
 		box-shadow: var(--shadow-card);
-		padding: var(--spacing-xl);
 		overflow: hidden;
-		cursor: pointer;
 		font-family: inherit;
 		color: inherit;
 		text-decoration: none;
@@ -100,7 +109,7 @@
 			box-shadow 800ms var(--easing-ease-out),
 			transform 250ms var(--easing-ease-out);
 	}
-	.bfd-service::before {
+	.card::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -115,7 +124,7 @@
 		);
 		transition: opacity var(--duration-fast) ease;
 	}
-	.bfd-service::after {
+	.card::after {
 		content: '';
 		position: absolute;
 		top: -50%;
@@ -128,25 +137,49 @@
 		transform: translateX(-100%);
 		transition: transform 0.8s var(--easing-ease-out);
 	}
-	.bfd-service:hover {
+	.card:hover {
 		box-shadow: var(--shadow-card-hover);
 	}
-	.bfd-service:hover::before {
+	.card:hover::before {
 		opacity: 0;
 	}
-	.bfd-service:hover::after {
+	.card:hover::after {
 		transform: translateX(100%);
 	}
-	.bfd-service:focus-visible {
+	.card:focus-visible {
 		outline: 3px solid var(--primary-teal, var(--primary-blue-light));
 		outline-offset: 3px;
 	}
 
-	.bfd-service > * {
+	.card > * {
 		position: relative;
 		z-index: 2;
 	}
-	.bfd-service__icon {
+
+	.media {
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		background: var(--background-dark-alt);
+	}
+	.media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform var(--duration-slow) var(--easing-ease-out);
+	}
+	.card:hover .media img {
+		transform: scale(1.05);
+	}
+
+	.body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: var(--spacing-xl);
+	}
+
+	.icon {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -157,7 +190,7 @@
 		background: color-mix(in srgb, var(--primary-blue) 28%, transparent);
 		color: var(--primary-teal-bright, var(--primary-blue-bright));
 	}
-	.bfd-service__title {
+	.title {
 		font-family: var(--font-heading);
 		font-weight: 700;
 		font-size: clamp(2.4rem, 2.5vw, 3rem);
@@ -165,7 +198,7 @@
 		margin: 0 0 var(--spacing-md);
 		transform: translateZ(10px);
 	}
-	.bfd-service__desc {
+	.desc {
 		font-family: var(--font-body);
 		color: var(--text-tertiary);
 		line-height: var(--line-height-relaxed);
@@ -174,7 +207,7 @@
 		flex: 1;
 		transform: translateZ(5px);
 	}
-	.bfd-service__more {
+	.more {
 		margin-top: var(--spacing-lg);
 		font-family: var(--font-mono);
 		font-size: 1.4rem;
@@ -182,11 +215,12 @@
 		color: var(--accent-coral, var(--primary-blue-bright));
 		transition: color var(--duration-fast) ease;
 	}
-	.bfd-service:hover .bfd-service__more {
+	.card:hover .more {
 		color: var(--primary-teal-bright, var(--primary-blue-light));
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.bfd-service {
+		.card,
+		.media img {
 			transform: none !important;
 		}
 	}

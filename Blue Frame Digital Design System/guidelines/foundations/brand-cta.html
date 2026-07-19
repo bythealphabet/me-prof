@@ -1,0 +1,20 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Signature CTA Gradient" subtitle="135° from gradient-ink #00236f into primary-blue — the lithographic CTA" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark); padding: 30px 24px; display:flex; flex-direction:column; gap:18px; align-items:flex-start; }
+  .cta { font-family: var(--font-accent); font-weight:600; font-size: 15px; color: var(--text-primary); padding: 13px 30px; border-radius: var(--radius-md); border:none; background: linear-gradient(135deg, #00236f 0%, #1e3a8a 100%); box-shadow: 0 4px 16px rgba(11,28,48,.25); }
+  .bar { width: 100%; height: 54px; border-radius: var(--radius-md); background: linear-gradient(135deg, #00236f 0%, #1e3a8a 100%); }
+  .note { font-family: var(--font-mono); font-size: 11px; color: var(--text-light); }
+</style>
+</head>
+<body>
+  <button class="cta">Get Started →</button>
+  <div class="bar"></div>
+  <div class="note">linear-gradient(135deg, var(--gradient-ink) 0%, var(--primary-blue) 100%)</div>
+</body>
+</html>

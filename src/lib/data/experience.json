@@ -1,22 +1,32 @@
 [
 	{
-		"period": "2024 — Now",
-		"title": "SvelteKit & TypeScript",
-		"summary": "Migrating to modern frameworks, embracing type safety and full-stack Svelte development."
+		"period": "2024 — Present",
+		"title": "BlueFrame Digital",
+		"summary": "Building modern web applications with SvelteKit and TypeScript, with a strong focus on performance, accessibility, and user experience."
 	},
 	{
 		"period": "2021 — 2024",
-		"title": "MERN Stack Developer",
-		"summary": "Building full-stack applications with MongoDB, Express, React, and Node.js for local businesses in Curaçao."
+		"title": "DotControl | Digital Engagement Agency",
+		"summary": "Worked as a Front-end Developer, setting up modern build tooling, improving web performance and accessibility, and translating high-fidelity designs into production-ready code. Contributed to projects for clients including National Geographic, DPG Media, and SourceUp."
 	},
 	{
-		"period": "2020",
+		"period": "2019 — 2021",
+		"title": "Freelancing & Social Media Marketing",
+		"summary": "Worked with local businesses to strengthen their online presence through website development, digital marketing, and social media. Clients included Solar Gard Curaçao, Vertisol Curaçao, HIC Office Furniture, and Selling Easier."
+	},
+	{
+		"period": "2018",
 		"title": "First Freelance Projects",
-		"summary": "Launched Solar Gard and Vertisol Curaçao — two real-world client sites that are still live today."
+		"summary": "Designed and launched websites for Solar Gard Curaçao and Vertisol Curaçao—two client projects that remain live today and marked the beginning of my professional journey as a web developer."
 	},
 	{
-		"period": "2019",
-		"title": "Fell in Love with JavaScript",
-		"summary": "Started with HTML & CSS, then discovered the power of JavaScript and never looked back."
+		"period": "2017",
+		"title": "Hospital Nobo Otrobanda & Discovering JavaScript",
+		"summary": "While working on the construction of Hospital Nobo Otrobanda with Ballast Nedam, I began teaching myself web development. Starting with HTML and CSS, I soon discovered JavaScript, which sparked my passion for building for the web."
+	},
+	{
+		"period": "Before 2017",
+		"title": "Finding My Path",
+		"summary": "Worked in marketing agencies, hospitality, and restaurant management while studying at university and exploring a career in construction. Those experiences strengthened my communication, teamwork, and problem-solving skills—qualities I continue to rely on as a developer."
 	}
 ]

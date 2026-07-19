@@ -1,0 +1,37 @@
+<!-- @dsCard group="Colors" viewport="700x230" name="Surfaces & Text" subtitle="The dark navy surface ramp and foreground ladder" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--background-dark); padding: 24px; display:flex; gap: 18px; }
+  .col { flex: 1; }
+  .lbl { font-family: var(--font-accent); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); margin-bottom: 8px; }
+  .stack { display:flex; flex-direction:column; border-radius: var(--radius-md); overflow:hidden; box-shadow: var(--shadow-card); }
+  .surf { height: 40px; display:flex; align-items:center; padding: 0 12px; font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); }
+  .txt { display:flex; flex-direction:column; gap: 9px; }
+  .txt p { margin:0; font-family: var(--font-mono); font-size: 15px; }
+</style>
+</head>
+<body>
+  <div class="col">
+    <div class="lbl">Surface ramp</div>
+    <div class="stack">
+      <div class="surf" style="background:#0a0e1a">background-dark · #0A0E1A</div>
+      <div class="surf" style="background:#0f1729">background-dark-alt · #0F1729</div>
+      <div class="surf" style="background:#152340">background-card · #152340</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="lbl">Text ladder</div>
+    <div class="txt">
+      <p style="color:#e0e7ff">text-primary · #E0E7FF</p>
+      <p style="color:#93c5fd">text-secondary · #93C5FD</p>
+      <p style="color:#cbd5e1">text-tertiary · #CBD5E1</p>
+      <p style="color:#64748b">text-light · #64748B</p>
+    </div>
+  </div>
+</body>
+</html>
