@@ -9,6 +9,7 @@
 		tilt = true,
 		icon,
 		imgUrl,
+		alt = '',
 		class: className = '',
 		...rest
 	}: {
@@ -19,6 +20,7 @@
 		tilt?: boolean;
 		icon?: Snippet;
 		imgUrl?: string;
+		alt?: string;
 		class?: string;
 		[key: string]: unknown;
 	} = $props();
@@ -42,26 +44,28 @@
 {#if href}
 	<!-- Callers must pre-resolve internal hrefs with resolve()/asset() from $app/paths. -->
 	<!-- eslint-disable svelte/no-navigation-without-resolve -->
-	<div class={['container', className].filter(Boolean).join(' ')}>
-		<div class="img-wrapper">
-			<img src={imgUrl} alt="" />
-		</div>
-		<div class="content">
+	<a
+		bind:this={el}
+		{href}
+		class={['card', className].filter(Boolean).join(' ')}
+		style="transform: {transform}"
+		onmousemove={handleMove}
+		onmouseleave={reset}
+		{...rest}
+	>
+		{#if imgUrl}
+			<div class="media">
+				<!-- Decorative: the title right below already names the project. -->
+				<img src={imgUrl} {alt} loading="lazy" decoding="async" />
+			</div>
+		{/if}
+		<div class="body">
+			{#if icon}<span class="icon">{@render icon()}</span>{/if}
 			<h3 class="title">{title}</h3>
 			<p class="desc">{description}</p>
 			<span class="more">{cta}</span>
 		</div>
-		<a
-			bind:this={el}
-			{href}
-			style="transform: {transform}"
-			onmousemove={handleMove}
-			onmouseleave={reset}
-			{...rest}
-		>
-			{#if icon}<span class="bfd-service__icon">{@render icon()}</span>{/if}
-		</a>
-	</div>
+	</a>
 	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {:else}
 	<button
@@ -81,25 +85,21 @@
 {/if}
 
 <style lang="scss">
-	.container {
+	.card {
 		position: relative;
+		display: flex;
+		flex-direction: column;
 		height: 100%;
-		min-height: var(--card-size-h, 38rem);
 		text-align: left;
 		background: linear-gradient(
 			160deg,
 			color-mix(in srgb, var(--background-card) 88%, white 12%) 0%,
 			var(--background-card) 55%
 		);
-		display: grid;
-		grid-template-columns: var(--spacing-xl) 1fr var(--spacing-xl);
-		grid-template-rows: var(--spacing-xl) 1fr var(--spacing-xl);
 		border: none;
 		border-radius: var(--radius-sm);
 		box-shadow: var(--shadow-card);
-		/*padding: var(--spacing-xl);*/
 		overflow: hidden;
-		cursor: pointer;
 		font-family: inherit;
 		color: inherit;
 		text-decoration: none;
@@ -109,7 +109,7 @@
 			box-shadow 800ms var(--easing-ease-out),
 			transform 250ms var(--easing-ease-out);
 	}
-	.container::before {
+	.card::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -124,7 +124,7 @@
 		);
 		transition: opacity var(--duration-fast) ease;
 	}
-	.container::after {
+	.card::after {
 		content: '';
 		position: absolute;
 		top: -50%;
@@ -137,46 +137,46 @@
 		transform: translateX(-100%);
 		transition: transform 0.8s var(--easing-ease-out);
 	}
-	.container:hover {
+	.card:hover {
 		box-shadow: var(--shadow-card-hover);
 	}
-	.container:hover::before {
+	.card:hover::before {
 		opacity: 0;
 	}
-	.container:hover::after {
+	.card:hover::after {
 		transform: translateX(100%);
 	}
-	.container:focus-visible {
+	.card:focus-visible {
 		outline: 3px solid var(--primary-teal, var(--primary-blue-light));
 		outline-offset: 3px;
 	}
 
-	.container > * {
+	.card > * {
 		position: relative;
 		z-index: 2;
 	}
 
-	.content {
-		grid-column: 2;
-		grid-row: 2;
+	.media {
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		background: var(--background-dark-alt);
+	}
+	.media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform var(--duration-slow) var(--easing-ease-out);
+	}
+	.card:hover .media img {
+		transform: scale(1.05);
 	}
 
-	a {
-		grid-column: 1 / -1;
-		grid-row: 1 / -1;
-	}
-
-	.img-wrapper {
+	.body {
 		display: flex;
-		grid-column: 2;
-		grid-row: 2;
-
-		img {
-			display: block;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
+		flex-direction: column;
+		flex: 1;
+		padding: var(--spacing-xl);
 	}
 
 	.icon {
@@ -215,11 +215,12 @@
 		color: var(--accent-coral, var(--primary-blue-bright));
 		transition: color var(--duration-fast) ease;
 	}
-	.container:hover .more {
+	.card:hover .more {
 		color: var(--primary-teal-bright, var(--primary-blue-light));
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.container {
+		.card,
+		.media img {
 			transform: none !important;
 		}
 	}

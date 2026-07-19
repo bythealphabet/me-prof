@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import profile from '$lib/data/profile.json';
@@ -13,6 +14,11 @@
 
 <article class="bfd-section">
 	<div class="bfd-project">
+		<div class="bfd-project__back">
+			<Button variant="tertiary" href={resolve('/projects')}>
+				<span aria-hidden="true">←</span> All projects
+			</Button>
+		</div>
 		<div class="bfd-project__tags">
 			{#each project.meta.tags as tag (tag)}
 				<Badge variant="tag">{tag}</Badge>
@@ -28,6 +34,16 @@
 				<Button variant="ghost" href={project.meta.demo}>Live demo</Button>
 			{/if}
 		</div>
+		{#if project.meta.imgUrl}
+			<div class="bfd-project__media">
+				<img
+					src={project.meta.imgUrl}
+					alt="Screenshot of the {project.meta.title} website"
+					loading="eager"
+					decoding="async"
+				/>
+			</div>
+		{/if}
 		<div class="bfd-project__body">
 			<project.content />
 		</div>
@@ -43,6 +59,9 @@
 	.bfd-project {
 		max-width: 76rem;
 		margin: 0 auto;
+	}
+	.bfd-project__back {
+		margin-bottom: var(--spacing-xl);
 	}
 	.bfd-project__tags {
 		display: flex;
@@ -63,6 +82,20 @@
 		display: flex;
 		gap: var(--spacing-md);
 		margin: var(--spacing-lg) 0 var(--spacing-2xl);
+	}
+	.bfd-project__media {
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-card);
+		background: var(--background-card);
+		margin-bottom: var(--spacing-2xl);
+	}
+	.bfd-project__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 	.bfd-project__body :global(h2) {
 		font-size: var(--font-size-h3);
