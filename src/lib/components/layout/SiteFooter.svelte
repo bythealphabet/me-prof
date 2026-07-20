@@ -14,7 +14,6 @@
 			<h4>Explore</h4>
 			<ul role="list">
 				<li><a href="{resolve('/')}#about">About</a></li>
-				<li><a href="{resolve('/')}#skills">Skills</a></li>
 				<li><a href="{resolve('/')}#experience">Experience</a></li>
 				<li><a href={resolve('/projects')}>Projects</a></li>
 			</ul>
