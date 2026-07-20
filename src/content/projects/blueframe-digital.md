@@ -18,4 +18,4 @@ With over 8 years of experience, including enterprise-level work in the Netherla
 
 ## Stack
 
-The site features a fast, modern, and highly interactive user experience with customizable color themes (Classic Blue, Ocean Green, Workshop Wood) and light/dark modes. It is built using **Svelte 5** (utilizing runes for highly efficient state management), styled with **Tailwind CSS** for a clean, responsive layout, and deployed globally with robust SEO optimization.
+The site features a fast, modern, and highly interactive user experience with customizable color themes (Classic Blue, Ocean Green, Workshop Wood) and light/dark modes. It is built using **Svelte 5** with TypeScript (utilizing runes for highly efficient state management), styled with regular **SCSS** for a clean, responsive layout, and deployed globally with robust SEO optimization.

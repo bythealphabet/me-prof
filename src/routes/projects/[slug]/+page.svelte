@@ -99,7 +99,7 @@
 	}
 	.bfd-project__body :global(h2) {
 		font-size: var(--font-size-h3);
-		color: var(--text-primary);
+		color: var(--text-secondary);
 	}
 	.bfd-project__body :global(p),
 	.bfd-project__body :global(li) {
