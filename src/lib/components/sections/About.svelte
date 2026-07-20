@@ -88,7 +88,7 @@
 		grid-column: 1 / -1;
 		height: 100%;
 
-		@media (min-width: 767px) {
+		@media (min-width: 980px) {
 			display: grid;
 			grid-template-rows: 4.8rem 10rem auto 5rem minmax(10rem, auto) 20rem;
 		}
@@ -105,7 +105,7 @@
 		grid-column: 2 / -2;
 		grid-row: 3;
 
-		@media (min-width: 820px) {
+		@media (min-width: 979px) {
 			grid-column: 3 / -3;
 		}
 
@@ -129,7 +129,7 @@
 	.mobile {
 		display: block;
 
-		@media (min-width: 768px) {
+		@media (min-width: 979px) {
 			display: none;
 		}
 	}
@@ -138,7 +138,7 @@
 		display: none;
 		height: 520px; /* Enhanced canvas spatial layout height */
 
-		@media (min-width: 768px) {
+		@media (min-width: 979px) {
 			display: grid;
 		}
 	}
@@ -162,14 +162,14 @@
 
 		/* No drag-game on mobile (the canvas lives in .desktop), so this card can't
 		   ever reach `visible` via gameCompleted — just show it plainly, no animation. */
-		@media (max-width: 767px) {
+		@media (max-width: 979px) {
 			opacity: 1;
 			transform: none;
 			transition: none;
 			pointer-events: all;
 		}
 
-		@media (min-width: 767px) {
+		@media (min-width: 980px) {
 			grid-column: 3 / -3;
 		}
 	}
