@@ -10,7 +10,7 @@
 	import { onIntroComplete, heroIntro } from '$lib/animations/intro.svelte';
 	import { heroScroll } from '$lib/animations/homescroll.svelte';
 
-	const { className } = $props<{ className?: string }>();
+	const { className = '' } = $props<{ className?: string }>();
 
 	gsap.registerPlugin(ScrollTrigger);
 	let section: HTMLElement;

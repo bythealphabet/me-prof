@@ -9,15 +9,15 @@
 	"heroIntro": "Hi, I'm a Isaac Lucas, a Front-end Developer living on the beautiful Island of Curaçao.",
 	"bio": [
 		"I'm a lifelong learner and front-end developer living on the beautiful island of Curaçao 🌴.",
-		"My journey into web development began several years ago when I discovered HTML, CSS, and JavaScript. I was immediately drawn to the blend of creativity and problem-solving that comes with building for the web, and JavaScript has kept me curious ever since.",
-		"I enjoy continuously learning, exploring new technologies, and refining my craft. Whether it's improving performance, writing cleaner and more maintainable code, or crafting intuitive user experiences, I'm always looking for ways to build better websites.",
-		"Throughout my journey I've worked with technologies like SvelteKit, TypeScript, React, Vue, Razor (.NET), and Ruby on Rails. These days I'm especially excited about AI and autonomous agents, and I'm exploring how they can help developers create smarter, faster, and more capable web applications."
+		"My path into web development began several years ago when I discovered HTML, CSS, and JavaScript. I was immediately drawn to the blend of creativity and problem-solving that comes with building for the web, and JavaScript has kept me curious ever since.",
+		"I thrive on exploring new technologies and constantly refining my craft. I place a strong emphasis on web accessibility and performance, ensuring every project is highly inclusive, blazing fast, and built with clean, maintainable code.",
+		"Throughout my career, I've worked with a diverse toolkit including SvelteKit, TypeScript, React, Vue, Razor (.NET), and Ruby on Rails. These days, I'm especially excited about AI, autonomous agents and harness engeineering, focusing on building agentic AI systems, custom AI agents, and the infrastructure to support them."
 	],
 	"funFacts": [
-		"🎮 Playing video games with my kids — especially Rocket League",
-		"🏀 Basketball and Chess are my two favourite sports",
-		"🎸 Playing guitar — working through the Real Book of Jazz",
-		"🌊 Watching sunsets at Daaibooi Beach, Curaçao"
+		"🎮 Gaming with my kids — usually losing at Rocket League",
+		"🏀 Treating Chess and Basketball as my two main sports",
+		"🎸 Exploring genres on the guitar, from Metal and Jazz to Música Llanera 🪉",
+		"🌊 Catching sunsets at Daaibooi Beach"
 	],
 	"contact": {
 		"email": "lucas@bythealphabet.com",

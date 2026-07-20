@@ -85,10 +85,13 @@
 	}
 
 	.bfd-about {
-		display: grid;
-		grid-template-rows: 4.8rem 10rem auto 5rem minmax(auto, 10rem) 20rem;
 		grid-column: 1 / -1;
 		height: 100%;
+
+		@media (min-width: 767px) {
+			display: grid;
+			grid-template-rows: 4.8rem 10rem auto 5rem minmax(10rem, auto) 20rem;
+		}
 	}
 
 	.bfd-about__title {
@@ -142,8 +145,8 @@
 
 	/* Hobbies card container transition rules */
 	.bfd-about__facts {
-		grid-column: 3 / -3;
-		grid-row: 6;
+		grid-row: 6 / span 2;
+		grid-column: 2 / -2;
 		opacity: 0;
 		transform: translateY(30px);
 		transition:
@@ -155,6 +158,19 @@
 			opacity: 1;
 			transform: translateY(0);
 			pointer-events: all;
+		}
+
+		/* No drag-game on mobile (the canvas lives in .desktop), so this card can't
+		   ever reach `visible` via gameCompleted — just show it plainly, no animation. */
+		@media (max-width: 767px) {
+			opacity: 1;
+			transform: none;
+			transition: none;
+			pointer-events: all;
+		}
+
+		@media (min-width: 767px) {
+			grid-column: 3 / -3;
 		}
 	}
 

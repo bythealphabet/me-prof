@@ -107,6 +107,9 @@
 		if (!canvas) return;
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
+		// Container is hidden (e.g. below the desktop breakpoint) — wrapBoundary would go
+		// negative and the word-wrap loop below would spin on the same word forever.
+		if (containerWidth <= 0 || containerHeight <= 0) return;
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 

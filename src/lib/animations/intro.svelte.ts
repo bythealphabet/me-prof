@@ -88,24 +88,42 @@ function addThemeSwitch(tl: GSAPTimeline, element: HTMLElement, position?: gsap.
 	);
 }
 
+const MOBILE_QUERY = '(max-width: 767px)';
+const DESKTOP_QUERY = '(min-width: 768px)';
+
+/**
+ * On mobile the user is usually already scrolling by the time this plays, so
+ * the desktop timing (0.5s scale-in + 0.2s gap + 0.2s content fade, ~0.9s
+ * total) reads as sluggish. matchMedia keeps desktop untouched and gives
+ * mobile a snappier version of the same reveal.
+ */
 export function heroIntro(element: Element[]) {
 	const [first, ...rest] = element;
-	const tl = gsap.timeline({ onComplete: notifyIntroComplete });
-	tl.fromTo(
-		first,
-		{ opacity: 0, scale: 1.2 },
-		{ opacity: 1, scale: 1, duration: 0.5, ease: 'expo.inOut' }
-	).fromTo(
-		rest,
-		{ opacity: 0 },
-		{
-			opacity: 1,
-			duration: 0.2,
-			ease: 'bounce.inOut'
-			// stagger: (a) => {
-			// 	return a * 0.08;
-			// }
-		},
-		'+=0.2'
-	);
+
+	const buildTimeline = (firstDuration: number, gap: number, restDuration: number) =>
+		gsap
+			.timeline({ onComplete: notifyIntroComplete })
+			.fromTo(
+				first,
+				{ opacity: 0, scale: 1.2 },
+				{ opacity: 1, scale: 1, duration: firstDuration, ease: 'expo.inOut' }
+			)
+			.fromTo(
+				rest,
+				{ opacity: 0 },
+				{
+					opacity: 1,
+					duration: restDuration,
+					ease: 'bounce.inOut'
+					// stagger: (a) => {
+					// 	return a * 0.08;
+					// }
+				},
+				`+=${gap}`
+			);
+
+	gsap.matchMedia({
+		[DESKTOP_QUERY]: () => buildTimeline(0.5, 0.2, 0.2),
+		[MOBILE_QUERY]: () => buildTimeline(0.25, 0.05, 0.12)
+	});
 }
