@@ -11,7 +11,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="main-layout base-grid">
+<div id="root" class="main-layout base-grid">
 	<SiteNav />
 	<main class="base-grid">
 		{@render children()}
