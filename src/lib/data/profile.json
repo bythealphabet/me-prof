@@ -20,17 +20,13 @@
 		"🌊 Catching sunsets at Daaibooi Beach"
 	],
 	"contact": {
-		"email": "lucas@bythealphabet.com",
+		"email": "isaac@blueframe.digital.com",
 		"phone": "+599 9 516 8764",
 		"phoneHref": "tel:+59995168764",
 		"location": "Willemstad, Curaçao",
 		"mapsUrl": "https://maps.google.com/?q=Willemstad,Curacao"
 	},
-	"socials": [
-		{ "label": "GitHub", "href": "https://github.com/bythealphabet" },
-		{ "label": "Facebook", "href": "https://www.facebook.com/curacaowebdeveloper/" },
-		{ "label": "Twitter", "href": "https://twitter.com/bythealphabet1" }
-	],
+	"socials": [{ "label": "GitHub", "href": "https://github.com/bythealphabet" }],
 	"seo": {
 		"defaultDescription": "Isaac Lucas — Front-end Developer based in Curaçao. Building beautiful, functional web applications."
 	}
