@@ -5,26 +5,31 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import { projects } from '$lib/data/projects';
 	import { onMount } from 'svelte';
-	import { sectionScroll } from '$lib/animations/homescroll.svelte';
+	import { sectionScroll, projectCardsScroll } from '$lib/animations/homescroll.svelte';
 
 	const preview = $derived(projects.slice(0, 3));
+	let cardRefs: (HTMLElement | undefined)[] = $state([]);
 
 	let section: HTMLElement;
+
 	onMount(() => {
 		sectionScroll(section);
+		projectCardsScroll(cardRefs);
 	});
 </script>
 
 <section class="bfd-section bfd-section--alt" id="projects" bind:this={section}>
 	<SectionHeading eyebrow="// Selected Work" align="center">Projects</SectionHeading>
 	<div class="bfd-projects-grid">
-		{#each preview as project (project.meta.slug)}
-			<ProjectCard
-				title={project.meta.title}
-				description={project.meta.summary}
-				href={resolve('/projects/[slug]', { slug: project.meta.slug })}
-				imgUrl={project.meta.imgUrl}
-			/>
+		{#each preview as project, i (project.meta.slug)}
+			<div class="on-card" bind:this={cardRefs[i]}>
+				<ProjectCard
+					title={project.meta.title}
+					description={project.meta.summary}
+					href={resolve('/projects/[slug]', { slug: project.meta.slug })}
+					imgUrl={project.meta.imgUrl}
+				/>
+			</div>
 		{/each}
 	</div>
 	<div class="bfd-projects-more">
@@ -36,7 +41,6 @@
 	.bfd-section {
 		padding: clamp(8rem, 12vw, 15rem) clamp(2rem, 5vw, 8rem);
 		background: var(--background-dark);
-		opacity: 0;
 
 		grid-column: 1 / -1;
 	}
@@ -50,6 +54,11 @@
 		max-width: 120rem;
 		margin: var(--spacing-3xl) auto 0;
 	}
+
+	.on-card {
+		display: flex;
+	}
+
 	.bfd-projects-more {
 		display: flex;
 		justify-content: center;

@@ -36,7 +36,7 @@
 			<ul role="list">
 				<li>
 					<a href={asset('/resume.pdf')} target="_blank" rel="noopener">
-						<!-- <Mail size={14} /> Download CV -->
+						<Mail size={14} /> Download CV
 					</a>
 				</li>
 			</ul>
@@ -83,7 +83,7 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-		color: var(--text-primary);
+		color: var(--text-secondary);
 		margin: 0 0 var(--spacing-sm);
 	}
 	.bfd-footer__col ul {

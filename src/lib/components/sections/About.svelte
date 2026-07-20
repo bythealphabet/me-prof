@@ -3,6 +3,7 @@
 	import profile from '$lib/data/profile.json';
 	import { onMount } from 'svelte';
 	import { sectionScroll } from '$lib/animations/homescroll.svelte';
+	// import CanvasImageWrap from '$lib/components/layout/canvasImageWrap.svelte';
 	import CanvasImageWrap from '$lib/components/layout/canvasImageWrap.svelte';
 
 	let section: HTMLElement | undefined = $state();

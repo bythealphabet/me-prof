@@ -31,7 +31,7 @@
 				<Button variant="secondary" href={project.meta.repo}>View code</Button>
 			{/if}
 			{#if project.meta.demo}
-				<Button variant="ghost" href={project.meta.demo}>Live demo</Button>
+				<Button variant="ghost" href={project.meta.demo} target="_blank">Live demo</Button>
 			{/if}
 		</div>
 		{#if project.meta.imgUrl}

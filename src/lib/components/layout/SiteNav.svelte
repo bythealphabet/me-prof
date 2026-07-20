@@ -41,16 +41,6 @@
 		return () => window.removeEventListener('scroll', onScroll);
 	});
 
-	// $effect(() => {
-	// 	const handleScroll = () => {
-	// 		isAtTop = window.scrollY < 50; // Consider "at top" if within 50px
-	// 	};
-
-	// 	handleScroll(); // Check initial position
-	// 	window.addEventListener('scroll', handleScroll);
-	// 	return () => window.removeEventListener('scroll', handleScroll);
-	// });
-
 	$effect(() => {
 		const onKeydown = (e: KeyboardEvent) => {
 			if (e.key === 'Escape') menuOpen = false;
@@ -245,6 +235,11 @@
 		font-size: 2rem;
 		border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
 
+		&:hover {
+			color: var(--primary-teal-bright);
+			border-bottom: 1px solid var(--primary-teal-bright);
+		}
+
 		@media (min-width: 820px) {
 			font-size: 2.4rem;
 		}
@@ -259,6 +254,7 @@
 			flex-flow: row nowrap;
 
 			li {
+				list-style: none;
 				translate: 0 -10px;
 				opacity: 0;
 			}

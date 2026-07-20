@@ -11,6 +11,7 @@
 		imgUrl,
 		alt = '',
 		class: className = '',
+		cardRef = $bindable(),
 		...rest
 	}: {
 		title: string;
@@ -22,10 +23,13 @@
 		imgUrl?: string;
 		alt?: string;
 		class?: string;
+		cardRef?: HTMLElement;
+
 		[key: string]: unknown;
 	} = $props();
 
 	let el: HTMLElement | undefined = $state();
+
 	let transform = $state('perspective(1000px)');
 
 	function handleMove(e: MouseEvent) {
@@ -41,48 +45,50 @@
 	}
 </script>
 
-{#if href}
-	<!-- Callers must pre-resolve internal hrefs with resolve()/asset() from $app/paths. -->
-	<!-- eslint-disable svelte/no-navigation-without-resolve -->
-	<a
-		bind:this={el}
-		{href}
-		class={['card', className].filter(Boolean).join(' ')}
-		style="transform: {transform}"
-		onmousemove={handleMove}
-		onmouseleave={reset}
-		{...rest}
-	>
-		{#if imgUrl}
-			<div class="media">
-				<!-- Decorative: the title right below already names the project. -->
-				<img src={imgUrl} {alt} loading="lazy" decoding="async" />
+<div bind:this={cardRef}>
+	{#if href}
+		<!-- Callers must pre-resolve internal hrefs with resolve()/asset() from $app/paths. -->
+		<!-- eslint-disable svelte/no-navigation-without-resolve -->
+		<a
+			bind:this={el}
+			{href}
+			class={['card', className].filter(Boolean).join(' ')}
+			style="transform: {transform}"
+			onmousemove={handleMove}
+			onmouseleave={reset}
+			{...rest}
+		>
+			{#if imgUrl}
+				<div class="media">
+					<!-- Decorative: the title right below already names the project. -->
+					<img src={imgUrl} {alt} loading="lazy" decoding="async" />
+				</div>
+			{/if}
+			<div class="body">
+				{#if icon}<span class="icon">{@render icon()}</span>{/if}
+				<h3 class="title">{title}</h3>
+				<p class="desc">{description}</p>
+				<span class="more">{cta}</span>
 			</div>
-		{/if}
-		<div class="body">
-			{#if icon}<span class="icon">{@render icon()}</span>{/if}
-			<h3 class="title">{title}</h3>
-			<p class="desc">{description}</p>
-			<span class="more">{cta}</span>
-		</div>
-	</a>
-	<!-- eslint-enable svelte/no-navigation-without-resolve -->
-{:else}
-	<button
-		bind:this={el}
-		type="button"
-		class={['bfd-service', className].filter(Boolean).join(' ')}
-		style="transform: {transform}"
-		onmousemove={handleMove}
-		onmouseleave={reset}
-		{...rest}
-	>
-		{#if icon}<span class="bfd-service__icon">{@render icon()}</span>{/if}
-		<h3 class="bfd-service__title">{title}</h3>
-		<p class="bfd-service__desc">{description}</p>
-		<span class="bfd-service__more">{cta}</span>
-	</button>
-{/if}
+		</a>
+		<!-- eslint-enable svelte/no-navigation-without-resolve -->
+	{:else}
+		<button
+			bind:this={el}
+			type="button"
+			class={['bfd-service', className].filter(Boolean).join(' ')}
+			style="transform: {transform}"
+			onmousemove={handleMove}
+			onmouseleave={reset}
+			{...rest}
+		>
+			{#if icon}<span class="bfd-service__icon">{@render icon()}</span>{/if}
+			<h3 class="bfd-service__title">{title}</h3>
+			<p class="bfd-service__desc">{description}</p>
+			<span class="bfd-service__more">{cta}</span>
+		</button>
+	{/if}
+</div>
 
 <style lang="scss">
 	.card {
