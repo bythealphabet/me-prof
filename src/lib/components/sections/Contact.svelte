@@ -11,11 +11,46 @@
 	let email = $state('');
 	let message = $state('');
 
-	// No backend on a static site — hand off to the visitor's mail client.
-	function handleSubmit(e: SubmitEvent) {
+	let isSubmitting = $state(false);
+	let formMessage = $state('');
+	let formMessageType = $state<'success' | 'error' | ''>('');
+
+	// This site is a static build with no server of its own, so the contact
+	// form is sent via the Node backend already running for blueframe.digital
+	// on the same droplet (see CORS allowlist in that project's /api/contact).
+	const CONTACT_API_URL = 'https://blueframe.digital/api/contact';
+
+	async function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
-		const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
-		window.location.href = `mailto:${profile.contact.email}?subject=Portfolio contact&body=${body}`;
+		isSubmitting = true;
+		formMessage = '';
+		formMessageType = '';
+
+		try {
+			const response = await fetch(CONTACT_API_URL, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, email, message })
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				formMessage = 'Thank you! Your message has been sent successfully.';
+				formMessageType = 'success';
+				name = '';
+				email = '';
+				message = '';
+			} else {
+				formMessage = data.error || 'Something went wrong. Please try again.';
+				formMessageType = 'error';
+			}
+		} catch {
+			formMessage = 'Network error. Please try again later.';
+			formMessageType = 'error';
+		} finally {
+			isSubmitting = false;
+		}
 	}
 </script>
 
@@ -54,10 +89,20 @@
 			</ul>
 		</div>
 		<form class="bfd-contact__form" onsubmit={handleSubmit}>
-			<Input label="Name" bind:value={name} required />
-			<Input label="Email" type="email" bind:value={email} required />
-			<Input label="Message" multiline bind:value={message} required />
-			<Button variant="primary" type="submit">Send message</Button>
+			<Input label="Name" bind:value={name} required disabled={isSubmitting} />
+			<Input label="Email" type="email" bind:value={email} required disabled={isSubmitting} />
+			<Input label="Message" multiline bind:value={message} required disabled={isSubmitting} />
+			<Button variant="primary" type="submit" disabled={isSubmitting}>
+				{isSubmitting ? 'Sending…' : 'Send message'}
+			</Button>
+			{#if formMessage}
+				<p
+					class="bfd-contact__form-message bfd-contact__form-message--{formMessageType}"
+					role="alert"
+				>
+					{formMessage}
+				</p>
+			{/if}
 		</form>
 	</div>
 </section>
@@ -120,6 +165,17 @@
 		padding: var(--spacing-2xl);
 		border-radius: var(--radius-md);
 		box-shadow: var(--shadow-card);
+	}
+	.bfd-contact__form-message {
+		margin: 0;
+		font-size: 1.4rem;
+		text-align: center;
+	}
+	.bfd-contact__form-message--success {
+		color: var(--primary-teal-bright, var(--primary-blue-bright));
+	}
+	.bfd-contact__form-message--error {
+		color: var(--accent-coral);
 	}
 	@media (max-width: 820px) {
 		.bfd-contact {

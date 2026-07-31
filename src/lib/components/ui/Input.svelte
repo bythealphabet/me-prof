@@ -83,7 +83,7 @@
 	.bfd-field__control {
 		font-family: var(--font-body);
 		font-size: var(--font-size-body);
-		color: var(--text-primary);
+		color: var(--text-secondary);
 		background: color-mix(in srgb, var(--background-dark) 70%, var(--background-card) 30%);
 		border: none;
 		border-bottom: 1px solid transparent;
