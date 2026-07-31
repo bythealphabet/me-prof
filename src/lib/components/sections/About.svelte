@@ -82,13 +82,18 @@
 		background: var(--background-dark);
 		grid-column: 1 / -1;
 		position: relative;
+
+		@media (min-width: 980px) {
+		}
 	}
 
 	.bfd-about {
 		grid-column: 1 / -1;
 		height: 100%;
+		margin-top: 4rem;
 
 		@media (min-width: 980px) {
+			margin-top: 0;
 			display: grid;
 			grid-template-rows: 4.8rem 10rem auto 5rem minmax(10rem, auto) 20rem;
 		}
