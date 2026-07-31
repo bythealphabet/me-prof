@@ -82,9 +82,6 @@
 		background: var(--background-dark);
 		grid-column: 1 / -1;
 		position: relative;
-
-		@media (min-width: 980px) {
-		}
 	}
 
 	.bfd-about {

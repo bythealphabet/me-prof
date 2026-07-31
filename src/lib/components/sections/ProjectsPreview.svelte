@@ -41,6 +41,11 @@
 	.bfd-section {
 		padding: clamp(8rem, 12vw, 15rem) clamp(2rem, 5vw, 8rem);
 		background: var(--background-dark);
+		overflow: hidden;
+
+		@media (min-width: 980px) {
+			overflow: initial;
+		}
 
 		grid-column: 1 / -1;
 	}

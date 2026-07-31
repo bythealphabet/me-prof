@@ -138,7 +138,7 @@ export function experienceScroll(
 
 		ScrollTrigger.matchMedia({
 			[DESKTOP_QUERY]: () => buildDotTween('top 60%', 'top 40%', 0.4),
-			[MOBILE_QUERY]: () => buildDotTween('top 90%', 'top 70%', 0.25)
+			[MOBILE_QUERY]: () => buildDotTween('top 90%', 'top 70%', 0.5)
 		});
 	});
 }

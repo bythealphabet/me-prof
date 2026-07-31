@@ -20,6 +20,7 @@ html {
 	text-size-adjust: none;
 	font-size: 62.5%;
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 body {
@@ -29,13 +30,11 @@ body {
 	font-family: var(--font-body);
 	color: var(--text-primary);
 	background: var(--background-dark);
-	overflow-x: hidden;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 }
 
 #root {
-	overflow-x: hidden;
 	position: relative;
 	height: 100%;
 }
